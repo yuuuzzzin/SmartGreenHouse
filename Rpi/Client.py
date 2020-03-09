@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 # -*- coding: utf-8 -*-
 
 from socket import *
@@ -9,9 +10,11 @@ from collections import OrderedDict
 import serial
 import time
 import os
+from socket import error as SocketError
+import errno
 
 HOST = '18.218.71.35' # EC2 서버 주소
-PORT = 9999 
+PORT = 10001 
 BUFSIZE = 1024
 ADDR = (HOST,PORT)
 
@@ -20,29 +23,30 @@ if os.path.exists("/dev/ttyACM0") :
 elif os.path.exists("/dev/ttyACM1") :
     tty = "/dev/ttyACM1"
 ArduinoSerial = serial.Serial(tty, 9600);
+ArduinoSerial.flushInput();
 
-# 서버에 접속하기 위한 소켓 생성
-clientSocket = socket(AF_INET, SOCK_STREAM)	
-json_data = ""
-try:
-	# 서버에 접속 시도
-	clientSocket.connect(ADDR)	
-	print("success!")
-	while True:
-		f = open("SensorValue", 'r')
-		while True:
-			json_data = f.readline()
-			if not json_data: break
-			print(json_data)
-			# 서버에 데이터 전송
-			clientSocket.send(json_data)	
-		f.close()
-		#10초 간격으로서버로 전송 (DB에 저장됨)
-		time.sleep(10)
+s = socket(AF_INET, SOCK_STREAM)	
+s.connect((HOST,PORT))
+print("success!")
+while True:
+    try:
 
-		
-except Exception as e:
-    print('%s:%s'%ADDR)
-    sys.exit()
-
-print('connect is success')
+    # 서버에 접속 시도
+        f = open("SensorValue", 'r')
+        json_data = f.readline()
+        if not json_data: break
+        print(json_data)
+                # 서버에 데이터 전송
+        s.send(bytes(json_data,"UTF-8"))
+        f.close()
+        time.sleep(5)
+        print("====================")
+        buffer = s.recv(BUFSIZE)
+        buffer_str = buffer.decode("UTF-8")
+        print(buffer.decode())
+        time.sleep(5)
+    except SocketError as e:
+        print('에러 발생', e)
+        if e.errno != errno.ECONNRESET:
+            raise # Not error we are looking for
+        pass # Handle error here.
