@@ -11,7 +11,7 @@ import time
 import os
 
 HOST = '18.218.71.35' # EC2 서버 주소
-PORT = 10000 
+PORT = 9999 
 BUFSIZE = 1024
 ADDR = (HOST,PORT)
 
