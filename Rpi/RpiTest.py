@@ -45,7 +45,6 @@ sched = BackgroundScheduler()
 sched.start()
 
 sched.add_job(sendSensorData,'interval', seconds=5, id="test_1", args=[])
-#sched.add_job(recvData,'interval', seconds=8, id="test_2", args=[])
 
 while True:
     try:
@@ -66,22 +65,27 @@ while True:
             ArduinoSerial.write(b'StartWater1')
             print("StartWater1")
 
-        elif (water2 == "soil2soilbad"):
+        elif (water2 == "StartMotor2"):
             ArduinoSerial.write(b'StartWater2')
             print("StartWater2")
 
-        elif (water3 == "soil3soilbad"):
+        elif (water3 == "StartMotor3"):
             ArduinoSerial.write(b'StartWater3')
             print("StartWater3")
 
-        elif (led == "1"):
+        elif (led == "StartLed"):
             ArduinoSerial.write(b'StartLed')
             print("StartLed")
+            
+        elif (led == "StopLed"):
+            ArduinoSerial.write(b'StopLed')
+            print("StopLed")
 
-        elif (fan == "humibad"):
+        elif (fan == "StartFan"):
             ArduinoSerial.write(b'StartFan')
             print("humibad -> StartFan")
-        ArduinoSerial.flushOutput();
+            
+        ArduinoSerial.flushOutput(); #메모리 삭제
         time.sleep(5)
 
     except SocketError as e:

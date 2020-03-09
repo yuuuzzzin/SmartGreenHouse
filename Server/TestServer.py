@@ -47,12 +47,12 @@ def recvData(data):
         print(json_data)
         #temp = json_data['temp']
         #humi = json_data['humi']
-        temp = 655
-        humi = 50
+        temp = 655 #테스트용
+        humi = 50 #테스트용
         #soil1 = json_data['soil1']
         soil2 = json_data['soil2']
         soil3 = json_data['soil3']
-        soil1 = 1000
+        soil1 = 1000 #테스트용
         cds = json_data['cds']
         level = json_data['level']
         DeviceState = "json_data['DeviceState']"
@@ -79,6 +79,7 @@ def userCheck():
         user_s1 = row[1]
         user_s2 = row[2]
         user_s3 = row[3]
+        user_l = row[4]
         user_h = row[5]
         print(user_s1)
         global h, s1,s2,s3
@@ -88,6 +89,10 @@ def userCheck():
             s2 = "StartMotor2"
         elif (user_s3 == 'on'):
             s3 = "StartMotor3"
+        elif (user_l == 'on'):
+            led = "StartLed"
+        elif (user_l == 'off'):
+            led == "StopLed"
         elif (user_h == 'on'):
             h = "StartFan"
         print(h,s1,s2,s3)
