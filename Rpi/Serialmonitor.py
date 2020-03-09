@@ -14,4 +14,4 @@ while 1:
     input = ArduinoSerial.readline();
     with open('SensorValue','w') as f:
         f.write(input);
-    time.sleep(5)
+    time.sleep(10) #10초에 한번 읽어서 반영
