@@ -10,43 +10,43 @@ from collections import OrderedDict
 import serial
 import time
 import os
-from socket import error as SocketError
-import errno
 
-HOST = '18.218.71.35' # EC2 ì„œë²„ ì£¼ì†Œ
-PORT = 10001 
+#¼­¹ö¿Í Á¢¼Ó
+HOST = '18.218.71.35' # EC2 ¼­¹ö ÁÖ¼Ò
+PORT = 10000 
 BUFSIZE = 1024
 ADDR = (HOST,PORT)
 
+# ¾ÆµÎÀÌ³ë¿Í Á¢¼Ó
 if os.path.exists("/dev/ttyACM0") :
     tty = "/dev/ttyACM0"
 elif os.path.exists("/dev/ttyACM1") :
     tty = "/dev/ttyACM1"
+
 ArduinoSerial = serial.Serial(tty, 9600);
 ArduinoSerial.flushInput();
 
-s = socket(AF_INET, SOCK_STREAM)	
-s.connect((HOST,PORT))
-print("success!")
-while True:
-    try:
+# ¼­¹ö¿¡ Á¢¼ÓÇÏ±â À§ÇÑ ¼ÒÄÏ »ı¼º
+clientSocket = socket(AF_INET, SOCK_STREAM)	
+try:
+	# ¼­¹ö¿¡ Á¢¼Ó ½Ãµµ
+	clientSocket.connect(ADDR)	
+	print("success!")
+	data = clientSocket.recv(BUFSIZE)
+	data_str = data.decode("UTF-8")
+	print(data.decode())
+	led = data_str.split(' ')[0]
+	interval = data_str.split(' ')[1]		
 
-    # ì„œë²„ì— ì ‘ì† ì‹œë„
-        f = open("SensorValue", 'r')
-        json_data = f.readline()
-        if not json_data: break
-        print(json_data)
-                # ì„œë²„ì— ë°ì´í„° ì „ì†¡
-        s.send(bytes(json_data,"UTF-8"))
-        f.close()
-        time.sleep(5)
-        print("====================")
-        buffer = s.recv(BUFSIZE)
-        buffer_str = buffer.decode("UTF-8")
-        print(buffer.decode())
-        time.sleep(5)
-    except SocketError as e:
-        print('ì—ëŸ¬ ë°œìƒ', e)
-        if e.errno != errno.ECONNRESET:
-            raise # Not error we are looking for
-        pass # Handle error here.
+	ArduinoSerial.write(b'StartDevice')
+	print("StartDevice")
+	time.sleep(3)
+
+	if (led == "ledbad"):
+			ArduinoSerial.write(b'StartLed')
+			print("StartLed")
+			time.sleep(5)
+
+except Exception as e:
+    print('%s:%s'%ADDR)
+    sys.exit()
