@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smartgreenhouse"
+    >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"
+        />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        >
+        <activity android:name=".ui.reservation.FanReservationActivity"></activity>
+        <activity android:name=".ui.reservation.LedReservationActivity" />
+        <activity android:name=".ui.reservation.ReservationActivity" />
+        <activity android:name=".ui.MyPlant.SetWaterActivity" />
+        <activity android:name=".ui.plantInfo.PlantSettingActivity" />
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.plantstatus.PlantStatusActivity" />
+        <activity android:name=".ui.MyPlant.PlantItemActivity" />
+        <activity android:name=".ui.streaming.StreamingActivity" />
+        <activity android:name=".ui.plantInfo.PlantInfoItemActivity" />
+        <activity android:name=".ui.plantInfo.PlantInfoActivity" />
+        <activity android:name=".ui.mail.EmailActivity" />
+        <activity android:name=".ui.Account.SignupActivity" />
+        <activity android:name=".ui.Account.FindAccountActivity" />
+        <activity android:name=".ui.Account.LoginActivity" />
+        <activity android:name=".ui.camera.CameraActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.smartgreenhouse.ui.camera"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                />
+        </provider>
+    </application>
+
+</manifest>
