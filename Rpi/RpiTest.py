@@ -85,7 +85,7 @@ while True:
             ArduinoSerial.write(b'StartFan')
             print("humibad -> StartFan")
             
-        ArduinoSerial.flushOutput(); #메모리 삭제
+        ArduinoSerial.flushOutput(); #메모리 삭제, 이 문구 없으면 한번 작동하고 멈춤. 왜?
         time.sleep(5)
 
     except SocketError as e:
