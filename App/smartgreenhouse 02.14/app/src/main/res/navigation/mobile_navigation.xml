@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.smartgreenhouse.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <activity
+        android:id="@+id/nav_plantinfo"
+        android:name="com.example.smartgreenhouse.ui.plantInfo.PlantInfoActivity"
+        android:label="plantInfo"
+        tools:layout="@layout/activity_plant_info" />
+
+    <activity
+        android:id="@+id/nav_reservation"
+        android:name="com.example.smartgreenhouse.ui.reservation.ReservationActivity"
+        android:label="reservation"
+        tools:layout="@layout/activity_reservation" />
+
+    <activity
+        android:id="@+id/nav_streaming"
+        android:name="com.example.smartgreenhouse.ui.streaming.StreamingActivity"
+        android:label="Streaming"
+        tools:layout="@layout/activity_streaming" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.smartgreenhouse.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.smartgreenhouse.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+
+
+    <activity
+        android:id="@+id/nav_camera"
+        android:name="com.example.smartgreenhouse.ui.camera.CameraActivity"
+        android:label="@string/menu_camera"
+        tools:layout="@layout/activity_camera" />
+
+    <activity
+        android:id="@+id/nav_set"
+        android:name="com.example.smartgreenhouse.ui.plantstatus.PlantStatusActivity"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/activity_plant_status" />
+
+    <activity
+        android:id="@+id/nav_email"
+        android:name="com.example.smartgreenhouse.ui.mail.EmailActivity"
+        android:label="@string/menu_email"
+        tools:layout="@layout/activity_email" />
+
+    <fragment
+        android:id="@+id/nav_graph"
+        android:name="com.example.smartgreenhouse.ui.graph.GraphFragment"
+        android:label="@string/menu_graph"
+        tools:layout="@layout/fragment_graph" />
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.smartgreenhouse.ui.setting.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" />
+
+</navigation>
