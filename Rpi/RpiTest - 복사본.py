@@ -37,8 +37,8 @@ def sendSensorData():
     if not json_data:
         print("empty sensor data")
     #print(json_data)
-    # 서버에 데이터 전송
-    s.send(json_data.encode())
+            # 서버에 데이터 전송
+    s.send(bytes(json_data,"UTF-8"))
     f.close()
 
 sched = BackgroundScheduler()

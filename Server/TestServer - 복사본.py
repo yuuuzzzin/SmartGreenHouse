@@ -36,18 +36,17 @@ print('accept')
 print('--client information--')
 print(clientSocekt)
 
-#data = clientSocekt.recv(BUFSIZE)
-#Ard_data = data.decode()
+data = clientSocekt.recv(BUFSIZE)
 
-def recvData():
+def recvData(data):
     try:
-        data = clientSocekt.recv(BUFSIZE)
-        Ard_data = data.decode()
-        json_data = json.loads(Ard_data)
-        print('json 데이터', json_data)
-
-        #temp = Ard_data['temp']
-        #humi = Ard_data['humi']
+        curs = conn.cursor()
+        print(data)
+        #if (data[0] == '{'):
+        json_data = json.loads(data)
+        print(json_data)
+        #temp = json_data['temp']
+        #humi = json_data['humi']
         temp = 655 #테스트용
         humi = 50 #테스트용
         #soil1 = json_data['soil1']
@@ -57,15 +56,13 @@ def recvData():
         cds = json_data['cds']
         level = json_data['level']
         DeviceState = json_data['DeviceState']
-        print('디바이스 상태', DeviceState)
-
-        curs = conn.cursor()
+        print(DeviceState)
         if DeviceState != "null":
             DeviceStateDB(DeviceState)
 
         currentdate = datetime.datetime.now()+timedelta(hours=9)
         date = currentdate.strftime('%Y-%m-%d %H:%M:%S')
-        #print(date)
+        print(date)
         sql = """INSERT INTO sensor (temp, humi, soil1, soil2, soil3, cds, level, date) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
         curs.execute(sql, (temp, humi, soil1, soil2, soil3, cds, level, date))
         conn.commit()
@@ -78,25 +75,25 @@ def userCheck(): #사용자가 물줘라 하면 워터펌프 작동
         sql = """select * from device where number = 1""" 
         curs.execute(sql)
         row = curs.fetchone()
-        #print(row)
+        print(row)
         user_s1 = row[1]
         user_s2 = row[2]
         user_s3 = row[3]
         user_l = row[4]
         user_h = row[5]
-        #print(user_s1)
+        print(user_s1)
         global h, s1,s2,s3
         if (user_s1 == 'on'):
             s1 = "StartMotor1"
-        if (user_s2 == 'on'):
+        elif (user_s2 == 'on'):
             s2 = "StartMotor2"
-        if (user_s3 == 'on'):
+        elif (user_s3 == 'on'):
             s3 = "StartMotor3"
-        if (user_l == 'on'):
+        elif (user_l == 'on'):
             led = "StartLed"
-        if (user_l == 'off'):
+        elif (user_l == 'off'):
             led == "StopLed"
-        if (user_h == 'on'):
+        elif (user_h == 'on'):
             h = "StartFan"
         print(h,s1,s2,s3)
     except:
@@ -146,29 +143,29 @@ def WaterCycle(watercycleCode, soil):
         if soil > 1000 : #임시값이므로 실험을 통한 수정 필요
             return "soilgood"
         else:
-            return "StartMotor@@"
+            return "StartMotor"
     elif watercycleCode == "053002":
         if soil > 800 : #임시값이므로 실험을 통한 수정 필요
             return "soilgood"
         else:
-            return "StartMotor@@"
+            return "StartMotor"
     elif watercycleCode == "053003":
         if soil > 600 : #임시값이므로 실험을 통한 수정 필요
             return "soilgood"
         else:
                             #print("soilbad3")
-            return "StartMotor@@"
+            return "StartMotor"
     elif watercycleCode == "053004":
         if soil > 400 : #임시값이므로 실험을 통한 수정 필요
             return "soilgood"
         else:
-            return "StartMotor@@"
+            return "StartMotor"
 
 def Humi(humi):
     if humi >= 70 :
         return "humigood"
     else:
-        return "StartFan##"
+        return "StartFan"
 def WaterLevel(level):
     if level < 100 : #임시값이므로 실험을 통한 수정 필요
         return "waterlevelbad"
@@ -177,18 +174,14 @@ def WaterLevel(level):
 
 def DeviceStateDB(DeviceState):
     curs = conn.cursor()
-    if DeviceState == "water1Finish":
+    if DeviceState == "water1FInish":
         sql = "UPDATE device SET water1 = %s LIMIT 2"
+
         curs.execute(sql, ('off'))
         conn.commit()
 
-    if DeviceState == "water2Finish":
+    elif DeviceState == "water2Finish":
         sql = "UPDATE device SET water2 = %s LIMIT 2"
-        curs.execute(sql, ('off'))
-        conn.commit()
-
-    if DeviceState == "water3Finish":
-        sql = "UPDATE device SET water3 = %s LIMIT 2"
         curs.execute(sql, ('off'))
         conn.commit()
     
@@ -196,7 +189,7 @@ def DeviceStateDB(DeviceState):
 sched = BackgroundScheduler()
 sched.start()
 
-sched.add_job(recvData,'interval', seconds=5, id="test_1", args=[])
+sched.add_job(recvData,'interval', seconds=5, id="test_1", args=[data])
 #sched.add_job(userCheck,'interval', seconds=3, id="test_2", args=[])
 
 while True:
