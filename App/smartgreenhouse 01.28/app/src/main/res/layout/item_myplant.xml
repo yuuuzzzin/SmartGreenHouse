@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/cardview"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="250dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/first"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eee">
+
+                <RelativeLayout
+                    android:layout_width="250dp"
+                    android:layout_height="55dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:background="#fff"
+                    android:layout_marginBottom="1dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/leaf" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/imageView"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="Medium Text"
+                            android:id="@+id/plantName"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rl_image"
+                android:layout_width="240dp"
+                android:layout_height="250dp"
+                >
+
+                <ImageView
+                    android:id="@+id/plantImage"
+                    android:layout_width="240dp"
+                    android:layout_height="250dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#FFFFFF">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"/>
+
+                <ImageView
+                    android:id="@+id/waterButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/waterbutton"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
