@@ -22,6 +22,7 @@ s2='null'
 s3='null'
 l='null'
 h='null'
+conn2 = pymysql.connect(host='database-1.cudf3zzu3npf.us-east-2.rds.amazonaws.com', user='jeongmin', password='97shwjdals!', db='mydb',charset='utf8')
 
 # 소켓 생성
 serverSocket = socket(AF_INET, SOCK_STREAM)
@@ -197,6 +198,7 @@ def DeviceStateDB(DeviceState):
         conn.commit()
         
 def SensorUpload():
+    curs = conn2.cursor()
     data = clientSocekt.recv(BUFSIZE)
     Ard_data = data.decode()
     json_data = json.loads(Ard_data)
@@ -217,10 +219,11 @@ def SensorUpload():
     #print(date)
     sql = """INSERT INTO sensor (temp, humi, soil1, soil2, soil3, cds, level, date) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
     curs.execute(sql, (temp, humi, soil1, soil2, soil3, cds, level, date))
-    conn.commit()
+    conn2.commit()
+    
 
-def TTTT():
-    curs = conn.cursor()
+def TTTT(): #이름바꾸기
+    curs = conn2.cursor()
     sql = "select * from sensor order by id desc limit 1" # DB의 마지막 한줄만 가져옴
     curs.execute(sql)
     row = curs.fetchone()
@@ -243,6 +246,7 @@ def TTTT():
     curs.close()
     id = row[0]
     
+    ####함수로 만들어서 코드 깔끔하게 만들기
     curs = conn.cursor()        
     sql = "select * from userplant where position = %s"
     curs.execute(sql,id+'1')
