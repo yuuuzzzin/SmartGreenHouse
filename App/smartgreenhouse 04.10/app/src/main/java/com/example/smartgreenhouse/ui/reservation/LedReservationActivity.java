@@ -139,7 +139,7 @@ public class LedReservationActivity extends AppCompatActivity {
                 reserveLed(readID, txtStart, txtEnd);
             }
         });
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        /*calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 if (month <10){
@@ -160,7 +160,7 @@ public class LedReservationActivity extends AppCompatActivity {
                 date = year + "-" + txtMonth + "-" + txtdayOfMonth +" ";
 
             }
-        });
+        });*/
         btnSetdate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

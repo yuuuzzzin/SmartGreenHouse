@@ -45,9 +45,9 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
 
         //TextView status1 = (TextView) findViewById(R.id.txtName); //파싱된 결과확인!
 
-        boolean initem = false, inNum = false, inName = false, inInfo = false;
+        boolean initem = false, inNum = false, inName = false, inInfo = false, inManagedemanddo = false;
 
-        String num = null, name = null, info = null;
+        String num = null, name = null, info = null, managedemanddo = null;
 
         try {
             URL url = new URL("http://api.nongsaro.go.kr/service/garden/gardenDtl?" //농사로 OpenAPI
@@ -76,10 +76,15 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                         if (parser.getName().equals("adviseInfo")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inInfo = true;
                         }
+                        if (parser.getName().equals("managedemanddoCodeNm")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inManagedemanddo = true;
+                        }
                         if (parser.getName().equals("message")) { //message 태그를 만나면 에러 출력
                             txtDetail.setText(txtDetail.getText() + "에러");
                             //여기에 에러코드에 따라 다른 메세지를 출력하도록 할 수 있다.
                         }
+
+
                         break;
 
                     case XmlPullParser.TEXT://parser가 내용에 접근했을때
@@ -95,11 +100,15 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                             info = parser.getText();
                             inInfo = false;
                         }
+                        if (inManagedemanddo) { //isAddress이 true일 때 태그의 내용을 저장.
+                            managedemanddo = parser.getText();
+                            inManagedemanddo = false;
+                        }
 
                         break;
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("item")) {
-                            txtDetail.setText("컨텐츠 번호 : " + num + "\n" + "식물 이름: " + name + "\n"+"식물 정보: " + info + "\n");
+                            txtDetail.setText("컨텐츠 번호 : " + num + "\n" + "식물 이름: " + name + "\n"+"식물 정보: " + info + "\n" + "관리 난이도: " + managedemanddo + "\n");
                             Info = info;
                             initem = false;
                         }
@@ -116,6 +125,8 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                     obj.put("cntntsNo", num);
                     obj.put("plntbneNm",name);
                     obj.put("adviseInfo", info);
+                    obj.put("managedemanddoCodeNm", info);
+
                 }
                 Total = obj.toString();
 

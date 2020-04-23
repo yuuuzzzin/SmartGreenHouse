@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.example.smartgreenhouse.ui.reservation.FanReservationActivity">
 
-    <RadioGroup
+<!--    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -27,23 +27,23 @@
             android:layout_weight="1"
             android:text="시간 설정" />
 
-    </RadioGroup>
+    </RadioGroup>-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="304dp"
         >
         <TimePicker
-            android:visibility="invisible"
+            android:visibility="visible"
             android:id="@+id/timePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:timePickerMode="spinner"
             />
-        <CalendarView
+<!--        <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleY="0.8"/>
+            android:scaleY="0.8"/>-->
 
     </FrameLayout>
     <LinearLayout

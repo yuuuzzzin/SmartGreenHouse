@@ -64,8 +64,11 @@ public class PlantInfoActivity extends AppCompatActivity implements View.OnClick
 
         try{
             URL url = new URL("http://api.nongsaro.go.kr/service/garden/gardenList?"    //'농사로' OpenAPI
-                    + "apiKey="
+                    + "numOfRows="
+                    + "217"
+                    + "&apiKey="
                     + "20200114KXGDZSXXBNORHYRUSLWYQ"
+                   //  http://api.nongsaro.go.kr/service/garden/gardenList?numOfRows=217&apiKey=20200114KXGDZSXXBNORHYRUSLWYQ
             ); //검색 URL부분
 
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
