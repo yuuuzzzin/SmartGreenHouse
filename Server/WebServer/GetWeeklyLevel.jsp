@@ -42,11 +42,11 @@
 			}
 			
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select  substring(date,7,4), avg(water) from sensor where date between '"+date+"' and  '"+strDate+"' group by DATE_FORMAT(date, '%y%m%d')");
+			ResultSet rs = stmt.executeQuery("select  substring(date,7,4), avg(level) from sensor where date between '"+date+"' and  '"+strDate+"' group by DATE_FORMAT(date, '%y%m%d')");
 			for(int i=1; i<8; i++){
 				if(rs.next()) {
 					jObject.put("RESULT", "1");
-					jObject.put("level"+i, rs.getString("avg(water)"));
+					jObject.put("level"+i, rs.getString("avg(level)"));
 					jObject.put("date"+i, rs.getString("substring(date,7,4)"));
 					jArray.add(jObject);
 
