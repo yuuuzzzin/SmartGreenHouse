@@ -2,18 +2,12 @@ package com.example.smartgreenhouse.ui.reservation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.DatePicker;
+import android.widget.CalendarView;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -26,38 +20,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.smartgreenhouse.R;
-import com.example.smartgreenhouse.ui.MyPlant.SetWaterActivity;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-
-import android.os.SystemClock;
-import android.provider.Settings;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.Chronometer;
-import android.widget.CompoundButton;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Calendar;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LedReservationActivity extends AppCompatActivity {
-
     Button btnStart, btnEnd, btnReserve;
-    RadioButton btnSetdate, btnSettime;
+
     CalendarView calendar;
     TimePicker time;
     TextView txtreserve, txtreserve2;
@@ -77,9 +52,7 @@ public class LedReservationActivity extends AppCompatActivity {
         btnStart = (Button) findViewById(R.id.button2);
         btnEnd = (Button) findViewById(R.id.button3);
         btnReserve = (Button) findViewById(R.id.button4);
-        btnSetdate = (RadioButton) findViewById(R.id.radioButton);
-        btnSettime = (RadioButton) findViewById(R.id.radioButton2);
-        calendar = (CalendarView) findViewById(R.id.calendarView);
+
         time = (TimePicker) findViewById(R.id.timePicker);
         txtreserve = (TextView) findViewById(R.id.textView);
         txtreserve2 = (TextView) findViewById(R.id.textView2);
@@ -87,7 +60,7 @@ public class LedReservationActivity extends AppCompatActivity {
         btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (time.getHour() <10){        // 시간 형식을 맞추기 위해
+                if (time.getHour() <10){
                     txtHour = "0"+ time.getHour();
                 }else if(time.getHour()>9) {
                     txtHour = Integer.toString(time.getHour());
@@ -98,8 +71,8 @@ public class LedReservationActivity extends AppCompatActivity {
                     txtMinute = Integer.toString(time.getMinute());
                 }
 
-                String times = txtHour + ":" + txtMinute + ":00";
-                txtreserve2.setText(date + times);
+                String times = txtHour + ":" + txtMinute;
+                txtreserve2.setText(times);
 
 
                 // txtEnd = txtreserve2.getText().toString();
@@ -120,8 +93,8 @@ public class LedReservationActivity extends AppCompatActivity {
                 }else if(time.getMinute()>9){
                     txtMinute = Integer.toString(time.getMinute());
                 }
-                String times = txtHour + ":" + txtMinute + ":00";
-                txtreserve.setText(date + times);
+                String times = txtHour + ":" + txtMinute ;
+                txtreserve.setText(times);
 
                 //txtStart = txtreserve.getText().toString();
                 //Toast.makeText(getApplicationContext(), txtStart, Toast.LENGTH_SHORT).show();
@@ -135,50 +108,13 @@ public class LedReservationActivity extends AppCompatActivity {
                 txtStart = txtreserve.getText().toString();
                 //Toast.makeText(getApplicationContext(), txtStart, Toast.LENGTH_SHORT).show();
                 txtEnd = txtreserve2.getText().toString();
-               // Toast.makeText(getApplicationContext(), txtStart +" /// " +txtEnd, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), txtStart +" /// " +txtEnd, Toast.LENGTH_SHORT).show();
                 reserveLed(readID, txtStart, txtEnd);
+                Toast.makeText(getApplicationContext(), "시간 설정을 완료했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                if (month <10){
-                    month = month+1;
-                    txtMonth =  "0" + Integer.toString(month);
-                }
-                else if (month>9){
-                    month = month+1;
-                    txtMonth = Integer.toString(month);
-                }
-                if (dayOfMonth <10){
-                    txtdayOfMonth =  "0" + Integer.toString(dayOfMonth);
-                }
-                else if(dayOfMonth > 9) {
-                    txtdayOfMonth = Integer.toString(dayOfMonth);
-                }
 
-                date = year + "-" + txtMonth + "-" + txtdayOfMonth +" ";
 
-            }
-        });
-        btnSetdate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (btnSetdate.isChecked()) {
-                    calendar.setVisibility(View.VISIBLE);
-                    time.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-        btnSettime.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (btnSettime.isChecked()) {
-                    calendar.setVisibility(View.INVISIBLE);
-                    time.setVisibility(View.VISIBLE);
-                }
-            }
-        });
 
 
         //reserveLed(readID, txtStart);

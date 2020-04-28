@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -60,6 +61,8 @@ public class PlantStatusActivity extends AppCompatActivity {
 
         //Toast.makeText(getApplicationContext(), readID+"함수 밖", Toast.LENGTH_SHORT);
 
+        getPlantStatus(readID);
+        /*
         Thread getThread;
         final Handler mHandler = new Handler();
         getThread = new Thread(new Runnable() {
@@ -87,6 +90,17 @@ public class PlantStatusActivity extends AppCompatActivity {
         });
 
         getThread.start();
+
+         */
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void initStatus()

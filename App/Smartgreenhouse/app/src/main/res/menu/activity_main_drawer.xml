@@ -6,41 +6,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/home"
             android:title="홈화면" />
 
         <item
-            android:id="@+id/nav_appinfo"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="앱 정보" />
-
-        <item
             android:id="@+id/nav_plantinfo"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/plant"
             android:title="식물 정보" />
 
 
         <item
+            android:id="@+id/nav_set"
+            android:icon="@drawable/greenhouse"
+            android:title="현재 온실 상태" />
+
+
+        <item
             android:id="@+id/nav_graph"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="온실 환경 분석" />
+            android:icon="@drawable/chart"
+            android:title="온실 환경 그래프" />
 
         <item
             android:id="@+id/nav_reservation"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/reservation"
             android:title="장치 예약" />
 
         <item
             android:id="@+id/nav_streaming"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/streaming"
             android:title="스트리밍" />
 
 
 
-        <item
-            android:id="@+id/nav_set"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="온실 환경 조절" />
 
         <item
             android:id="@+id/nav_camera"
@@ -49,8 +46,13 @@
 
         <item
             android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/setting"
             android:title="설정" />
+
+        <item
+            android:id="@+id/nav_appinfo"
+            android:icon="@drawable/info"
+            android:title="앱 정보" />
 
     </group>
 

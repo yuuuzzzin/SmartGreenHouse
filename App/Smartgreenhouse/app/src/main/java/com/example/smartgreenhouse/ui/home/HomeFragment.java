@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ import com.example.smartgreenhouse.ui.MyPlant.ItemTouchHelperCallback;
 import com.example.smartgreenhouse.ui.MyPlant.MyPlant;
 import com.example.smartgreenhouse.ui.MyPlant.MyPlantAdapter;
 import com.example.smartgreenhouse.ui.plantInfo.PlantInfoItem;
+import com.example.smartgreenhouse.ui.plantInfo.PlantSettingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +55,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     MyPlantAdapter adapter;
     ItemTouchHelper helper;
-    ToggleButton toggleButton1;
+    Button button1;
     ToggleButton toggleButton2;
     ToggleButton toggleButton3;
     TextView txtLed, txtWater1, txtWater2, txtWater3, txtFan;
@@ -127,14 +129,9 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
 
-        toggleButton1 = (ToggleButton) view.findViewById(R.id.toggleButton1);
+        button1 = (Button) view.findViewById(R.id.button1);
         toggleButton2 = (ToggleButton) view.findViewById(R.id.toggleButton2);
         toggleButton3 = (ToggleButton) view.findViewById(R.id.toggleButton3);
-        txtLed = (TextView) view.findViewById(R.id.txtLed);
-        txtWater1 = (TextView) view.findViewById(R.id.txtWater1);
-        txtWater2 = (TextView) view.findViewById(R.id.txtWater2);
-        txtWater3 = (TextView) view.findViewById(R.id.txtWater3);
-        txtFan = (TextView) view.findViewById(R.id.txtFan);
         test = (TextView) view.findViewById(R.id.test);
         final String finalID = readId();
 
@@ -152,8 +149,11 @@ public class HomeFragment extends Fragment {
         Toast.makeText(getContext(), json, Toast.LENGTH_SHORT).show();
         jsonParsing(json);*/
         initDeviceStatus(finalID);
+        getDeviceStatus(finalID);
         //testData();
+       /* 스레드
         Thread getThread;
+
         final Handler mHandler = new Handler();
         getThread = new Thread(new Runnable() {
             @Override
@@ -178,17 +178,13 @@ public class HomeFragment extends Fragment {
         });
         getThread.start();
 
-        toggleButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        */
+
+        button1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true) {
-                    setWaterStatus(finalID, "on");
-                    //Toast.makeText(getContext(), "토글클릭-ON", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    setWaterStatus(finalID, "off");
-                    //Toast.makeText(getContext(), "토글클릭-OFF", Toast.LENGTH_SHORT).show();
-                }
+            public void onClick(View v) {
+                setWaterStatus(finalID, "on");
+                Toast.makeText(getContext(), "전체 물주기 완료", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -264,24 +260,8 @@ public class HomeFragment extends Fragment {
                         String led = jObject.optString("led");
                         String fan = jObject.optString("fan");
 
-                        txtLed.setText(led);
-                        txtWater1.setText(water1);
-                        txtWater2.setText(water2);
-                        txtWater3.setText(water3);
-                        txtFan.setText(fan);
-
                         ledStatus = led;
                         fanStatus = fan;
-                        if(water1.equals("on") && water2.equals("on") && water2.equals("on"))
-                            waterStatus = "on";
-                        else
-                            waterStatus = "off";
-
-                        if (waterStatus!=null && waterStatus.equals("on")) {
-                            toggleButton1.setChecked(true);
-                        } else if (waterStatus!=null && waterStatus.equals("off")) {
-                            toggleButton1.setChecked(false);
-                        }
 
                         if (ledStatus!=null && ledStatus.equals("on")) {
                             toggleButton2.setChecked(true);
@@ -298,11 +278,6 @@ public class HomeFragment extends Fragment {
                     }
                     else
                     {
-                        txtLed.setText("?");
-                        txtFan.setText("?");
-                        txtWater1.setText("?");
-                        txtWater2.setText("?");
-                        txtWater3.setText("?");
                     }
                 }
                 catch(JSONException e)
@@ -357,24 +332,8 @@ public class HomeFragment extends Fragment {
                         String led = jObject.optString("led");
                         String fan = jObject.optString("fan");
 
-                        txtLed.setText(led);
-                        txtWater1.setText(water1);
-                        txtWater2.setText(water2);
-                        txtWater3.setText(water3);
-                        txtFan.setText(fan);
-
                         /*ledStatus = led;
                         fanStatus = fan;
-                        if(water1.equals("on") && water2.equals("on") && water2.equals("on"))
-                            waterStatus = "on";
-                        else
-                            waterStatus = "off";
-
-                        if (waterStatus!=null && waterStatus.equals("on")) {
-                            toggleButton1.setChecked(true);
-                        } else if (waterStatus!=null && waterStatus.equals("off")) {
-                            toggleButton1.setChecked(false);
-                        }
 
                         if (ledStatus!=null && ledStatus.equals("on")) {
                             toggleButton2.setChecked(true);
@@ -391,11 +350,6 @@ public class HomeFragment extends Fragment {
                     }
                     else
                     {
-                        txtLed.setText("?");
-                        txtFan.setText("?");
-                        txtWater1.setText("?");
-                        txtWater2.setText("?");
-                        txtWater3.setText("?");
                     }
                 }
                 catch(JSONException e)

@@ -87,8 +87,9 @@
     <string name="reservedFanUrl">http://18.218.71.35/ReservedFan.jsp</string>
 
     //그래프
-    <string name="getGraphInfoUrl">http://18.218.71.35/GetPlantStatus.jsp</string>
     <string name="getWeeklyTempsUrl">http://18.218.71.35/GetWeeklyTemperature.jsp</string>
+    <string name="getWeeklyHumiUrl">http://18.218.71.35/GetWeeklyHumi.jsp</string>
+    <string name="getWeeklyLevelUrl">http://18.218.71.35/GetWeeklyLevel.jsp</string>
 
     //시스템 설정
     <string name="titleSetting">설정</string>
@@ -98,5 +99,6 @@
     <string name="autoLogin">자동 로그인</string>
     <string name="keepAutoLogin">로그인 상태를 유지합니다</string>
     <string name="title_activity_graph_test">GraphTestActivity</string>
+    <string name="title_activity_chart_tab">ChartTabActivity</string>
 
 </resources>

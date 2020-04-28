@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="화분 상태"
+            android:text="온실 상태"
             android:textStyle="bold"
             android:textColor="#000000"
             android:layout_marginTop="5dp"
@@ -74,7 +74,7 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:src="@drawable/temperature" />
+                android:src="@drawable/humi" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -106,7 +106,7 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:src="@drawable/temperature" />
+                android:src="@drawable/soilhumi" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -138,7 +138,7 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:src="@drawable/temperature" />
+                android:src="@drawable/soilhumi" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -170,7 +170,7 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:src="@drawable/temperature" />
+                android:src="@drawable/soilhumi" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -201,38 +201,7 @@
                 android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:src="@drawable/temperature" />
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:text="조도"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="#000000"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-            <TextView
-                android:id="@+id/txtCds"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:textSize="20dp"
-                android:layout_marginRight="20dp"
-                android:textColor="#000000"
-                android:gravity="right"
-                android:layout_gravity="right"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:src="@drawable/temperature" />
+                android:src="@drawable/waterlevel" />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -254,6 +223,38 @@
                 android:gravity="right"
                 android:layout_gravity="right"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:src="@drawable/sun" />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="조도"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#000000"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/txtCds"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:textSize="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#000000"
+                android:gravity="right"
+                android:layout_gravity="right"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

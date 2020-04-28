@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -62,6 +63,16 @@ public class UserPlantInfoActivity extends AppCompatActivity {
        // Toast.makeText(getApplicationContext(), "정보 가져오기 완료", Toast.LENGTH_SHORT).show();
 
     }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void jsonParsing(String json)
     {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smartgreenhouse">
+    package="com.example.smartgreenhouse"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -8,7 +9,8 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
+        android:required="true"
+        />
 
     <application
         android:allowBackup="true"
@@ -17,35 +19,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.graph.ChartActivity">
-        </activity>
+        android:usesCleartextTraffic="true"
+        >
         <activity
-            android:name=".ui.graph.GraphTestActivity"
-            android:label="@string/title_activity_graph_test"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.graph.ChartTabActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity"
 
-        </activity>
-        <activity android:name=".ui.reservation.FanReservationActivity" />
-        <activity android:name=".ui.reservation.LedReservationActivity" />
-        <activity android:name=".ui.reservation.ReservationActivity" />
-        <activity android:name=".ui.MyPlant.SetWaterActivity" />
-        <activity android:name=".ui.plantInfo.PlantSettingActivity" />
-        <activity android:name=".ui.plantstatus.PlantStatusActivity" />
-        <activity android:name=".ui.MyPlant.PlantItemActivity" />
-        <activity android:name=".ui.MyPlant.UserPlantInfoActivity" />
-        <activity android:name=".ui.streaming.StreamingActivity" />
-        <activity android:name=".ui.plantInfo.PlantInfoItemActivity" />
-        <activity android:name=".ui.plantInfo.PlantInfoActivity" />
-        <activity android:name=".ui.mail.EmailActivity" />
-        <activity android:name=".ui.Account.SignupActivity" />
-        <activity android:name=".ui.Account.FindAccountActivity" />
+            ></activity>
+        <activity android:name=".ui.graph.ChartMainActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.graph.ChartActivity"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".ui.reservation.FanReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.reservation.LedReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.reservation.ReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.SetWaterActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantSettingActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantstatus.PlantStatusActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.PlantItemActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.UserPlantInfoActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.streaming.StreamingActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantInfoItemActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantInfoActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.mail.EmailActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.Account.SignupActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.Account.FindAccountActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".ui.Account.LoginActivity" />
-        <activity android:name=".ui.camera.CameraActivity" />
+        <activity android:name=".ui.camera.CameraActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +77,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,10 +90,12 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.smartgreenhouse.ui.camera"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/file_paths"
+                />
         </provider>
     </application>
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -64,8 +65,11 @@ public class PlantInfoActivity extends AppCompatActivity implements View.OnClick
 
         try{
             URL url = new URL("http://api.nongsaro.go.kr/service/garden/gardenList?"    //'농사로' OpenAPI
-                    + "apiKey="
+                    + "numOfRows="
+                    + "217"
+                    + "&apiKey="
                     + "20200114KXGDZSXXBNORHYRUSLWYQ"
+                    //  http://api.nongsaro.go.kr/service/garden/gardenList?numOfRows=217&apiKey=20200114KXGDZSXXBNORHYRUSLWYQ
             ); //검색 URL부분
 
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
@@ -121,6 +125,16 @@ public class PlantInfoActivity extends AppCompatActivity implements View.OnClick
             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
         }
     }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onClick(View v) {

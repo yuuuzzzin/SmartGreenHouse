@@ -56,7 +56,7 @@
 
     <activity
         android:id="@+id/nav_graph"
-        android:name="com.example.smartgreenhouse.ui.graph.ChartActivity"
+        android:name="com.example.smartgreenhouse.ui.graph.ChartMainActivity"
         android:label="@string/menu_graph"
         tools:layout="@layout/activity_chart" />
 
