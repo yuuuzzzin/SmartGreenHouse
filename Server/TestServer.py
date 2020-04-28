@@ -54,7 +54,7 @@ def recvData():
     except:
         pass
 
-def userCheck(): #사용자가 물줘라 하면 워터펌프 작동
+def userCheck(): #사용자 설정 확인 후 장치 작동
     try:
         curs = conn.cursor()
         sql = """select * from device where number = 1""" 
@@ -85,7 +85,7 @@ def userCheck(): #사용자가 물줘라 하면 워터펌프 작동
         Current = datetime.datetime.now()+timedelta(hours=9)
         CurrentTime = Current.strftime('%H:%M') #str형식으로 변환
         
-        print(Start_led, End_led, Start_fan, End_fan, CurrentTime)
+        #print(Start_led, End_led, Start_fan, End_fan, CurrentTime)
         
         if (Start_led == CurrentTime):
             print("같다")
