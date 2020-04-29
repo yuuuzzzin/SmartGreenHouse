@@ -243,7 +243,7 @@ def SensorUpload():
     conn2.commit()
     
 
-def TTTT(): #이름바꾸기
+def plantInfo():
     curs = conn2.cursor()
     sql = "select * from sensor order by id desc limit 1" # DB의 마지막 한줄만 가져옴
     curs.execute(sql)
@@ -327,7 +327,7 @@ def TTTT(): #이름바꾸기
 sched = BackgroundScheduler()
 sched.start()
 
-sched.add_job(TTTT,'cron', second='1', id="test_1", args=[]) #1분에 한번
+sched.add_job(plantInfo,'cron', second='1', id="test_1", args=[]) #1분에 한번
 sched.add_job(SensorUpload,'cron', second='31', id="test_2", args=[]) #1분에 한번
 
 while True:
