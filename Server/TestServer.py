@@ -223,16 +223,11 @@ def SensorUpload():
     data = clientSocekt.recv(BUFSIZE)
     Ard_data = data.decode()
     json_data = json.loads(Ard_data)
-    #temp = json_data['temp']
-    #humi = json_data['humi']
-    temp = 655 #테스트용
-    humi = 50 #테스트용
-    #soil1 = json_data['soil1']
-    #soil2 = json_data['soil2']
-    #soil3 = json_data['soil3']
-    soil1 = 1000 #테스트용
-    soil2 = 1000 #테스트용
-    soil3 = 1000 #테스트용
+    temp = json_data['temp']
+    humi = json_data['humi']
+    soil1 = json_data['soil1']
+    soil2 = json_data['soil2']
+    soil3 = json_data['soil3']
     cds = json_data['cds']
     level = json_data['level']
     currentdate = datetime.datetime.now()+timedelta(hours=9)
