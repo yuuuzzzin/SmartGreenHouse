@@ -223,16 +223,11 @@ def SensorUpload():
     data = clientSocekt.recv(BUFSIZE)
     Ard_data = data.decode()
     json_data = json.loads(Ard_data)
-    #temp = json_data['temp']
-    #humi = json_data['humi']
-    temp = 655 #테스트용
-    humi = 50 #테스트용
-    #soil1 = json_data['soil1']
-    #soil2 = json_data['soil2']
-    #soil3 = json_data['soil3']
-    soil1 = 1000 #테스트용
-    soil2 = 1000 #테스트용
-    soil3 = 1000 #테스트용
+    temp = json_data['temp']
+    humi = json_data['humi']
+    soil1 = json_data['soil1']
+    soil2 = json_data['soil2']
+    soil3 = json_data['soil3']
     cds = json_data['cds']
     level = json_data['level']
     currentdate = datetime.datetime.now()+timedelta(hours=9)
@@ -243,7 +238,7 @@ def SensorUpload():
     conn2.commit()
     
 
-def TTTT(): #이름바꾸기
+def plantInfo():
     curs = conn2.cursor()
     sql = "select * from sensor order by id desc limit 1" # DB의 마지막 한줄만 가져옴
     curs.execute(sql)
@@ -327,7 +322,7 @@ def TTTT(): #이름바꾸기
 sched = BackgroundScheduler()
 sched.start()
 
-sched.add_job(TTTT,'cron', second='1', id="test_1", args=[]) #1분에 한번
+sched.add_job(plantInfo,'cron', second='1', id="test_1", args=[]) #1분에 한번
 sched.add_job(SensorUpload,'cron', second='31', id="test_2", args=[]) #1분에 한번
 
 while True:

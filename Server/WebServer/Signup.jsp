@@ -10,6 +10,7 @@
 	String password = request.getParameter("PASSWORD");
 	String name = request.getParameter("NAME");
 	String phone = request.getParameter("PHONE");
+	String auto = "on";
 	
 	String nl = "";
 	if(nl.equals(id) || nl.equals(password) || nl.equals(name) || nl.equals(phone)) {
@@ -30,7 +31,7 @@
 			
 			SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr = date.format(new Date());
-			String query = String.format("insert into user(id, password, name, phone, regdate) values ('%s', '%s', '%s', '%s', '%s');", id, password, name, phone, dateStr);
+			String query = String.format("insert into user(id, password, name, phone, regdate, auto) values ('%s', '%s', '%s', '%s','%s','%s');", id, password, name, phone, dateStr, auto);
 			int n = stmt.executeUpdate(query);
 			jObject.put("RESULT", "1");
 		}
