@@ -37,8 +37,8 @@ def sendSensorData():
     if not json_data:
         print("empty sensor data")
     #print(json_data)
-            # 서버에 데이터 전송
-    s.send(bytes(json_data,"UTF-8"))
+    # 서버에 데이터 전송
+    s.send(json_data.encode())
     f.close()
 
 sched = BackgroundScheduler()
@@ -50,7 +50,6 @@ while True:
     try:
         buffer = s.recv(BUFSIZE)
         data = buffer.decode("UTF-8")
-
         DeviceValue = data.split(',')
         water1 = DeviceValue[0]
         water2 = DeviceValue[1]
@@ -58,7 +57,7 @@ while True:
         led = DeviceValue[3]
         fan = DeviceValue[4]
             
-        #print(buffer.decode())
+        print(water1, water2, water3, led, fan)
         ArduinoSerial.flushInput();
 
         if (water1 == "StartMotor1"):
@@ -83,10 +82,17 @@ while True:
 
         elif (fan == "StartFan"):
             ArduinoSerial.write(b'StartFan')
-            print("humibad -> StartFan")
-            
+            print("StartFan")
+
+        elif (fan == "StopFan"):
+            ArduinoSerial.write(b'StopFan')
+            print("StopFan")
+
+        else:
+            print("Nonoperating")
+
         ArduinoSerial.flushOutput(); #메모리 삭제, 이 문구 없으면 한번 작동하고 멈춤. 왜?
-        time.sleep(5)
+        time.sleep(4)
 
     except SocketError as e:
         print('에러 발생', e)

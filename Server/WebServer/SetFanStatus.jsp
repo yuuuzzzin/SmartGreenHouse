@@ -26,7 +26,7 @@
 			}
 		
 			stmt = conn.createStatement();
-			int rs = stmt.executeUpdate("update device set fan = '" + fan + "' where number = '1';");
+			int rs = stmt.executeUpdate("update device set fan = '" + fan + "' where id = '1';");
 		
 			if(rs != 0) {
 				jsonMain.put("RESULT", "1");
