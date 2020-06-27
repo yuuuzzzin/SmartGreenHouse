@@ -25,7 +25,6 @@ if os.path.exists("/dev/ttyACM0") :
 elif os.path.exists("/dev/ttyACM1") :
     tty = "/dev/ttyACM1"
 ArduinoSerial = serial.Serial(tty, 9600);
-#ArduinoSerial.flushInput();
 
 s = socket(AF_INET, SOCK_STREAM)	
 s.connect((HOST,PORT))
@@ -36,7 +35,6 @@ def sendSensorData():
     json_data = f.readline()
     if not json_data:
         print("empty sensor data")
-    #print(json_data)
     # 서버에 데이터 전송
     s.send(json_data.encode())
     f.close()
@@ -63,37 +61,30 @@ while True:
         if (water1 == "StartMotor1"):
             ArduinoSerial.write(b'StartWater1')
             print("StartWater1")
-
         elif (water2 == "StartMotor2"):
             ArduinoSerial.write(b'StartWater2')
             print("StartWater2")
-
         elif (water3 == "StartMotor3"):
             ArduinoSerial.write(b'StartWater3')
             print("StartWater3")
-
         elif (led == "StartLed"):
             ArduinoSerial.write(b'StartLed')
             print("StartLed")
-            
         elif (led == "StopLed"):
             ArduinoSerial.write(b'StopLed')
             print("StopLed")
-
         elif (fan == "StartFan"):
             ArduinoSerial.write(b'StartFan')
             print("StartFan")
-
         elif (fan == "StopFan"):
             ArduinoSerial.write(b'StopFan')
             print("StopFan")
-
         else:
+            ArduinoSerial.write(b'null')
             print("Nonoperating")
-
-        ArduinoSerial.flushOutput(); #메모리 삭제, 이 문구 없으면 한번 작동하고 멈춤. 왜?
+            
+        ArduinoSerial.flushOutput();
         time.sleep(4)
-
     except SocketError as e:
         print('에러 발생', e)
         s.close()
