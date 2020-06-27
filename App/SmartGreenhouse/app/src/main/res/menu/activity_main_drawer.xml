@@ -37,7 +37,10 @@
             android:title="스트리밍" />
 
 
-
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@drawable/home"
+            android:title="게시판" />
 
         <item
             android:id="@+id/nav_camera"
@@ -53,6 +56,12 @@
             android:id="@+id/nav_appinfo"
             android:icon="@drawable/info"
             android:title="앱 정보" />
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/info"
+            android:title="지도" />
+
 
     </group>
 

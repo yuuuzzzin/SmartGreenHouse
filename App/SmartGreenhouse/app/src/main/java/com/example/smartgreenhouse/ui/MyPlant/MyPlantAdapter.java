@@ -71,8 +71,8 @@ public class MyPlantAdapter extends RecyclerView.Adapter<MyPlantAdapter.ViewHold
         textView.setText(data.getPlantNickname());
 
         ImageView imageView = viewHolder.imageView;
-        imageView.setImageResource(data.getImage());
-
+        imageView.setImageBitmap(data.getImage());
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         ImageButton btnWater = viewHolder.btnWater;
         btnWater.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +168,7 @@ public class MyPlantAdapter extends RecyclerView.Adapter<MyPlantAdapter.ViewHold
             super(itemView);
             textView = itemView.findViewById(R.id.plantName);
             imageView = itemView.findViewById(R.id.plantImage);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             btnWater = itemView.findViewById(R.id.waterButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +194,8 @@ public class MyPlantAdapter extends RecyclerView.Adapter<MyPlantAdapter.ViewHold
 
         public void onBind(MyPlant myplant) {
             textView.setText(myplant.getPlantNickname());
-            imageView.setImageResource(myplant.getImage());
+            imageView.setImageBitmap(myplant.getImage());
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         }
     }
     public String readId() {

@@ -1,8 +1,10 @@
 package com.example.smartgreenhouse.ui.MyPlant;
 
+import android.graphics.Bitmap;
+
 public class MyPlant {
     String plantNickname;
-    int img;
+    Bitmap img;
     String plantPosition;
 
 
@@ -14,11 +16,11 @@ public class MyPlant {
         this.plantNickname = plantNickname;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return img;
     }
 
-    public void setImage(int img) {
+    public void setImage(Bitmap img) {
         this.img = img;
     }
 

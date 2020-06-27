@@ -73,88 +73,68 @@ public class PlantInfoActivity extends AppCompatActivity implements View.OnClick
         boolean initem = false, inNum = false, inName = false, inCourse = false, inFilename = false;
         String num = null, name = null, course = null, filename = null;
 
-        try{
+        try {
             URL url = new URL("http://api.nongsaro.go.kr/service/garden/gardenList?"    //'농사로' OpenAPI
                     + "numOfRows="
                     + "217"
                     + "&apiKey="
                     + "20200114KXGDZSXXBNORHYRUSLWYQ"
-                 //   +"&cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054002%2C054004%2C054006&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054002&grwhstleChk=054004&grwhstleChk=054006&priceTypeSel=&waterCycleSel="
-               //   +"&cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054001%2C054004%2C054006&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054001&grwhstleChk=054004&grwhstleChk=054006&priceTypeSel=&waterCycleSel="
-             //   +"&cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054001%2C054004&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054001&grwhstleChk=054004&priceType=3&priceTypeSel=&waterCycleSel="
-                // +"&cntntsNo=&pageNo=1&word=&lightChkVal=055003&grwhstleChkVal=054001%2C054004&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=057004%2C057005&sType=sCntntsSj&sText=&wordType=cntntsSj&lightChk=055003&grwhstleChk=054001&grwhstleChk=054004&winterLwetChk=057004&winterLwetChk=057005&priceType=medium&priceTypeSel=&waterCycleSel="
-                  +"&cntntsNo=&pageNo=1&word=&lightChkVal=055003&grwhstleChkVal=054001%2C054002%2C054004&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=057004%2C057005&sType=sCntntsSj&sText=&wordType=cntntsSj&lightChk=055003&grwhstleChk=054001&grwhstleChk=054002&grwhstleChk=054004&winterLwetChk=057004&winterLwetChk=057005&priceType=medium&priceTypeSel=&waterCycleSel="
-                    //  http://api.nongsaro.go.kr/service/garden/gardenList?numOfRows=217&apiKey=20200114KXGDZSXXBNORHYRUSLWYQ
+                    + "&cntntsNo=&pageNo=1&word=&lightChkVal=055003&grwhstleChkVal=054001%2C054002%2C054004&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=057004%2C057005&sType=sCntntsSj&sText=&wordType=cntntsSj&lightChk=055003&grwhstleChk=054001&grwhstleChk=054002&grwhstleChk=054004&winterLwetChk=057004&winterLwetChk=057005&priceType=medium&priceTypeSel=&waterCycleSel="
             ); //검색 URL부분
-          //  http://api.nongsaro.go.kr/service/garden/gardenList?numOfRows=217&apiKey=20200114KXGDZSXXBNORHYRUSLWYQ&cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054002%2C054004%2C054006&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054002&grwhstleChk=054004&grwhstleChk=054006&priceTypeSel=&waterCycleSel=
-          //  http://api.nongsaro.go.kr/service/garden/gardenList?numOfRows=217&apiKey=20200114KXGDZSXXBNORHYRUSLWYQ&cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054001&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054001&priceTypeSel=&waterCycleSel=
-          //  http://18.218.71.35/gardenList.jsp?cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054001&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054001&priceTypeSel=&waterCycleSel=
-          //  http://18.218.71.35/gardenList.jsp?cntntsNo=&pageNo=1&word=&lightChkVal=&grwhstleChkVal=054001%2C054002%2C054004%2C054006&lefcolrChkVal=&lefmrkChkVal=&flclrChkVal=&fmldecolrChkVal=&ignSeasonChkVal=&winterLwetChkVal=&sType=sCntntsSj&sText=&wordType=cntntsSj&grwhstleChk=054001&grwhstleChk=054002&grwhstleChk=054004&grwhstleChk=054006&priceTypeSel=&waterCycleSel=
 
             XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserCreator.newPullParser();
-
             parser.setInput(url.openStream(), null);
-
             int parserEvent = parser.getEventType();
             System.out.println("파싱시작합니다.");
 
-            while (parserEvent != XmlPullParser.END_DOCUMENT){
-                switch(parserEvent){
+            while (parserEvent != XmlPullParser.END_DOCUMENT) {
+                switch (parserEvent) {
                     case XmlPullParser.START_TAG://parser가 시작 태그를 만나면 실행
-                        if(parser.getName().equals("cntntsNo")){ //컨텐츠 번호 만나면 내용을 받을수 있게 하자
+                        if (parser.getName().equals("cntntsNo")) { //컨텐츠 번호 만나면 내용을 받을수 있게 하자
                             inNum = true;
                         }
-                        if(parser.getName().equals("cntntsSj")){ //식물 이름 만나면 내용을 받을수 있게 하자
+                        if (parser.getName().equals("cntntsSj")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inName = true;
                         }
-                        if(parser.getName().equals("rtnFileCours")){ //식물 이름 만나면 내용을 받을수 있게 하자
+                        if (parser.getName().equals("rtnFileCours")) {
                             inCourse = true;
                         }
-                        if(parser.getName().equals("rtnStreFileNm")){ //식물 이름 만나면 내용을 받을수 있게 하자
+                        if (parser.getName().equals("rtnStreFileNm")) {
                             inFilename = true;
                         }
-                        if(parser.getName().equals("message")){ //message 태그를 만나면 에러 출력
-                             //status1.setText(status1.getText()+"에러");
-                            //여기에 에러코드에 따라 다른 메세지를 출력하도록 할 수 있다.
+                        if (parser.getName().equals("message")) { //message 태그를 만나면 에러 출력
                         }
                         break;
 
                     case XmlPullParser.TEXT://parser가 내용에 접근했을때
-                        if(inNum){ //isTitle이 true일 때 태그의 내용을 저장.
+                        if (inNum) {
                             num = parser.getText();
                             inNum = false;
                         }
-                        if(inName){ //isAddress이 true일 때 태그의 내용을 저장.
+                        if (inName) {
                             name = parser.getText();
                             inName = false;
                         }
-                        if(inCourse){ //isAddress이 true일 때 태그의 내용을 저장.
+                        if (inCourse) {
                             course = parser.getText();
                             inCourse = false;
-                          //  int idx = course.indexOf("|");
-                           // splitcourse = course.substring(0, idx);
-                            //inCourse = false;
                         }
-                        if(inFilename){ //isAddress이 true일 때 태그의 내용을 저장.
+                        if (inFilename) {
                             filename = parser.getText();
                             inFilename = false;
-                           // String array [] = filename.split("\\|"); // 여러개의 파일 이름이 있어 |를 구분하여 자름
-                         //   splitfile = array[0];
-                          //  inFilename = false;
+
 
                         }
 
                         break;
                     case XmlPullParser.END_TAG:
-                        if(parser.getName().equals("item")){
+                        if (parser.getName().equals("item")) {
                             PlantInfoItem plantinfoitem = new PlantInfoItem();
                             plantinfoitem.setName(name);
                             plantinfoitem.setCode(num);
                             plantinfoitem.setCourse(course);
                             plantinfoitem.setFilename(filename);
-
-                           // plantinfoitem.setImageurl("http://www.nongsaro.go.kr/"+splitcourse+"/"+splitfile);
 
                             adapter.addItem(plantinfoitem);
                             //status1.setText(status1.getText()+"컨텐츠 번호 : "+ num +"\n 식물명: "+ name +"\n");
@@ -166,13 +146,9 @@ public class PlantInfoActivity extends AppCompatActivity implements View.OnClick
                 }
                 parserEvent = parser.next();
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

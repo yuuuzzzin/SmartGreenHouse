@@ -56,9 +56,9 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
 
         //TextView status1 = (TextView) findViewById(R.id.txtName); //파싱된 결과확인!
 
-        boolean initem = false, inNum = false, inName = false, inInfo = false, inLevel = false, inHdcode = false, inSpring = false, inSummer = false, inAutumn = false, inWinter = false, inHeight= false, inWidth= false, inTemp= false, inCourse=false, inFilename = false;
+        boolean initem = false, inNum = false, inName = false, inInfo = false, inLevel = false, inHdcode = false, inSoil=false, inFerti = false, inSpringNm = false, inSummerNm = false, inAutumnNm = false, inWinterNm = false, inSpring = false, inSummer = false, inAutumn = false, inWinter = false, inHeight= false, inWidth= false, inTemp= false, inCourse=false, inFilename = false;
 
-        String num = null, name = null, info = null, level = null, hdcode= null, spring = null, summer = null, autumn = null, winter = null, height = null, width = null, temp = null, course = null, filename = null;
+        String num = null, name = null, info = null, level = null, hdcode= null, soil=null, ferti=null, spring = null, summer = null, autumn = null, winter = null,springNm = null, summerNm = null, autumnNm = null, winterNm = null, height = null, width = null, temp = null, course = null, filename = null;
 
         try {
             URL url = new URL("http://api.nongsaro.go.kr/service/garden/gardenDtl?" //농사로 OpenAPI
@@ -102,17 +102,35 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                         if (parser.getName().equals("hdCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inHdcode = true;
                         }
-                        if (parser.getName().equals("watercycleSpringCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                        if (parser.getName().equals("frtlzrInfo")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inFerti = true;
+                        }
+                        if (parser.getName().equals("soilInfo")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inSoil = true;
+                        }
+                        if (parser.getName().equals("watercycleSprngCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inSpring = true;
+                        }
+                        if (parser.getName().equals("watercycleSprngCodeNm")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inSpringNm = true;
                         }
                         if (parser.getName().equals("watercycleSummerCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inSummer = true;
-                        }
+                        } if (parser.getName().equals("watercycleSummerCodeNm")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inSummerNm = true;
+                    }
                         if (parser.getName().equals("watercycleAutumnCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inAutumn = true;
                         }
+                        if (parser.getName().equals("watercycleAutumnCodeNm")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inAutumnNm = true;
+                        }
+
                         if (parser.getName().equals("watercycleWinterCode")) { //식물 이름 만나면 내용을 받을수 있게 하자
                             inWinter = true;
+                        }
+                        if (parser.getName().equals("watercycleWinterCodeNm")) { //식물 이름 만나면 내용을 받을수 있게 하자
+                            inWinterNm = true;
                         }
                         if(parser.getName().equals("rtnFileCours")){ //식물 이름 만나면 내용을 받을수 있게 하자
                             inCourse = true;
@@ -161,6 +179,14 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                             hdcode = parser.getText();
                             inHdcode = false;
                         }
+                        if (inSoil) {
+                            soil = parser.getText();
+                            inSoil = false;
+                        }
+                        if (inFerti) {
+                            ferti = parser.getText();
+                            inFerti = false;
+                        }
                         if (inSpring) { //isAddress이 true일 때 태그의 내용을 저장.
                             spring = parser.getText();
                             inSpring = false;
@@ -178,6 +204,23 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                             winter = parser.getText();
                             inWinter = false;
                         }
+                        if (inSpringNm) { // 물주기 코드명
+                            springNm = parser.getText();
+                            inSpringNm = false;
+                        }
+                        if (inSummerNm) { //isAddress이 true일 때 태그의 내용을 저장.
+                            summerNm = parser.getText();
+                            inSummerNm = false;
+                        }
+                        if (inAutumnNm) { //isAddress이 true일 때 태그의 내용을 저장.
+                            autumnNm = parser.getText();
+                            inAutumnNm = false;
+                        }
+
+                        if (inWinterNm) { //isAddress이 true일 때 태그의 내용을 저장.
+                            winterNm = parser.getText();
+                            inWinterNm = false;
+                        }
                         if(inCourse){ //isAddress이 true일 때 태그의 내용을 저장.
                             course = parser.getText();
                             inCourse = false;
@@ -190,7 +233,9 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                     case XmlPullParser.END_TAG:
                         if (parser.getName().equals("item")) {
                             txtDetail.setText("컨텐츠 번호 : " + num + "\n" + "식물 이름: " + name + "\n"+"식물 정보: " + info + "\n"+
-                                    "관리 수준 : " +level + "\n"+  "성장 높이 : " + height + "\n"+  "성장 넓이 : " + width + "\n"+  "생육 온도 : " + temp + "\n");
+                                    "관리 수준 : " +level + "\n"+  "성장 높이 : " + height + "\n"+  "성장 넓이 : " + width + "\n"+  "생육 온도 : " + temp + "\n"+
+                                      "여름 물주기 : " + summerNm + "\n"+  "겨울 물주기 : " + winterNm+"\n"+ "토양 정보 : "  + soil + "\n"+  "비료 정보 : " + ferti + "\n");
+                                 //   "봄 물주기 : " +springNm + "\n"+  "여름 물주기 : " + summerNm + "\n"+  "가을 물주기 : " + autumnNm + "\n"+  "겨울 물주기 : " + winterNm + "\n"+  "토양 정보:"  + soil + "\n"+  "비료 정보 : " + ferti + "\n");
                            // Toast.makeText(getApplicationContext(), Imageurl, Toast.LENGTH_SHORT).show();
 
 
@@ -237,10 +282,16 @@ public class PlantInfoItemActivity extends AppCompatActivity implements View.OnC
                     obj.put("growthHgInfo", height);
                     obj.put("growthAraInfo", width);
                     obj.put("hdCode", hdcode);
-                    obj.put("watercycleSpringCode", spring);
+                    obj.put("frtlzrInfo", ferti);
+                    obj.put("soilInfo", soil);
+                    obj.put("watercycleSprngCode", spring);
                     obj.put("watercycleSummerCode", summer );
                     obj.put("watercycleAutumnCode,", autumn );
                     obj.put("watercycleWinterCode",winter );
+                    obj.put("watercycleSprngCodeNm", springNm);
+                    obj.put("watercycleSummerCodeNm", summerNm );
+                    obj.put("watercycleAutumnCodeNm,", autumnNm );
+                    obj.put("watercycleWinterCodeNm",winterNm );
                     obj.put("image",Imageurl );
                  //   Toast.makeText(getApplicationContext(), Imageurl, Toast.LENGTH_SHORT).show();
                 }

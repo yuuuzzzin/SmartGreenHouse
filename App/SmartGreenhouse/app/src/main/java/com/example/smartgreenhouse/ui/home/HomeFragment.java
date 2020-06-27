@@ -3,10 +3,13 @@ package com.example.smartgreenhouse.ui.home;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,14 +47,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeFragment extends Fragment {
+
+    String info, url;
     RecyclerView recyclerView;
     MyPlantAdapter adapter;
     ItemTouchHelper helper;
@@ -101,6 +111,9 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
     }
     private void init(){
 
@@ -144,14 +157,9 @@ public class HomeFragment extends Fragment {
         //RecyclerView에 ItemTouchHelper 붙이기
         helper.attachToRecyclerView(recyclerView);
         getPlantInfo(finalID);
-        /*String json = "";
-        json = "{" + "\"Plants\":" + listdata.toString() + "}";
-        Toast.makeText(getContext(), json, Toast.LENGTH_SHORT).show();
-        jsonParsing(json);*/
-        initDeviceStatus(finalID);
-        getDeviceStatus(finalID);
-        //testData();
 
+
+        // 이 부분이 스레드 부분인데, 현재 오류가 나서 주석 처리 해놓았습니다.
         /*Thread getThread;
 
         final Handler mHandler = new Handler();
@@ -162,8 +170,8 @@ public class HomeFragment extends Fragment {
                     mHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            getDeviceStatus(finalID);
-                            getPlantInfo(finalID);
+                            getDeviceStatus(finalID);   // 장치 상태 받아오기
+                            getPlantInfo(finalID);      // 식물 정보 받아오기
                         }
                     });
                     try
@@ -529,8 +537,8 @@ public class HomeFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("ID", id);
                 params.put("WATER", water);
-              //  params.put("WATER2", water);
-              //  params.put("WATER3", water);
+                //  params.put("WATER2", water);
+                //  params.put("WATER3", water);
                 return params;
             }
         };
@@ -634,12 +642,26 @@ public class HomeFragment extends Fragment {
                     String result = jObject.optString("RESULT");
                     if(result.equals("1"))
                     {
+
                         for (int i=0; i<jarray.length(); i++) {
                             JSONObject jo = jarray.getJSONObject(i);
                             listdata.add(jarray.getString(i));
                             String nickname = jo.getString("nickname");
                             String position = jo.getString("position");
+                            info = jo.getString("info");
                         }
+
+                        //txtInfo.setText(info);
+                        //jsoninfo = txtInfo.getText().toString();
+
+
+
+                       // jsonParsingUrl(info);
+                      //  Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
+
+
+
+
                         //test.setText(listdata.get(0) + listdata.get(1) + listdata.get(2));
                         //test.setText(listdata.toString());
                         String json = "";
@@ -679,9 +701,25 @@ public class HomeFragment extends Fragment {
         };
         queue.add(stringRequest);
     }
+    private void jsonParsingUrl(String json) {
+        StringBuffer sb = new StringBuffer();
+        json = "[" + json + "]";
 
+        try {
+            JSONArray jarray = new JSONArray(json);
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                 url = jObject.optString("image");
+            }
+            //txtInfo.setText(sb.toString());
+        } catch (JSONException e) {
+            Log.d("캐치리스트출력에러", e.toString());
+            e.printStackTrace();
+        }
+    }
     private void jsonParsing(String json)
     {
+        //private Bitmap image = null;
         try{
             JSONObject jsonObject = new JSONObject(json);
             JSONArray plantArray = jsonObject.getJSONArray("Plants");
@@ -689,12 +727,30 @@ public class HomeFragment extends Fragment {
             Log.d("리스트출력에러", String.valueOf(plantArray.length()));
             for(int i=0; i<plantArray.length(); i++)
             {
+
                 JSONObject plantObject = plantArray.getJSONObject(i);
 
                 MyPlant dataItem = new MyPlant();
+
                 dataItem.setPlantNickname(plantObject.getString("nickname"));
-                dataItem.setImage(R.drawable.mainplant+i);
+                //dataItem.setImage(R.drawable.potplant);
                 dataItem.setPlantPosition(plantObject.getString("position"));
+                String info2 = plantObject.getString("info");
+
+                jsonParsingUrl(info2);
+                Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
+                String Url = url;
+                try {
+                    InputStream is = (InputStream) new URL(Url).getContent();
+                    Bitmap d = BitmapFactory.decodeStream(is);
+                    is.close();
+
+                    dataItem.setImage(d);
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), e.toString() + "이미지 불러오기 실패", Toast.LENGTH_SHORT).show();
+                }
+
                 adapter.addItem(dataItem);
             }
         }catch (JSONException e) {

@@ -85,6 +85,7 @@
 
                 <ImageView
                     android:id="@+id/plantImage"
+                    android:scaleType = "fitXY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />

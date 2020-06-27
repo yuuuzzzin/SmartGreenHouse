@@ -90,6 +90,13 @@ public class UserPlantInfoActivity extends AppCompatActivity {
                 String width = jObject.optString("growthAraInfo");
                 String level = jObject.optString("managelevelCodeNm");
                 String temp = jObject.optString("grwhTpCodeNm");
+                String soil = jObject.optString("soilInfo");
+                String ferti = jObject.optString("frtlzrInfo");
+                String spring = jObject.optString("watercycleSprngCodeNm");
+                String summer = jObject.optString("watercycleSummerCodeNm");
+                String autumn = jObject.optString("watercycleAutumnCodeNm");
+                String winter = jObject.optString("watercycleWinterCodeNm");
+
 
 
                 sb.append(
@@ -99,7 +106,14 @@ public class UserPlantInfoActivity extends AppCompatActivity {
                                 "관리 수준 :" +level+ "\n" +
                                 "성장 높이:" +height + "\n" +
                                 "성장 넓이:" +width+ "\n" +
-                                "생육 온도 :"+temp +"\n"
+                                "생육 온도 :"+temp +"\n"+
+                               // "봄 물주기 :"+spring+"\n"+
+                                "여름 물주기 :"+summer+"\n"+
+                              //  "가을 물주기 :"+autumn+"\n"+
+                                "겨울 물주기 :"+winter+"\n"+
+                                "토양 정보 :"+soil+"\n"+
+                                "비료 정보 :"+ferti+"\n"
+
                 );
             }
             txtInfo.setText(sb.toString());

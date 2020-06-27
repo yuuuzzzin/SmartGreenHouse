@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ui.community.CommunityArticleReadActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/community_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"/>
+    <TextView
+        android:textColor="#000000"
+        android:paddingTop="15sp"
+        android:paddingStart="20sp"
+        android:paddingBottom="15sp"
+        android:textSize="20sp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/community_read_title"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="76dp"
+        tools:ignore="RtlSymmetry" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingStart="20sp"
+            android:id="@+id/id"
+            android:text="@string/community_read_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+        <TextView
+            android:paddingStart="5sp"
+            android:text="@string/community_separate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+        <TextView
+            android:paddingStart="5sp"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/community_read_time"
+            tools:ignore="RtlSymmetry" />
+        <TextView
+            android:paddingStart="4sp"
+            android:text="@string/community_separate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+        <TextView
+            android:paddingStart="5sp"
+            android:id="@+id/hit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/community_read_hit"
+            tools:ignore="RtlSymmetry" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6"/>
+
+    <TextView
+        android:paddingStart="20sp"
+        android:paddingTop="30sp"
+        android:text="@string/community_read_memo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/memo"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        tools:ignore="RtlSymmetry" />
+
+
+</LinearLayout>

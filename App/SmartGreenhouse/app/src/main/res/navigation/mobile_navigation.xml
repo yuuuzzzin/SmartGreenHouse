@@ -28,7 +28,11 @@
         android:name="com.example.smartgreenhouse.ui.streaming.StreamingActivity"
         android:label="Streaming"
         tools:layout="@layout/activity_streaming" />
-
+    <fragment
+        android:id="@+id/nav_community"
+        android:name="com.example.smartgreenhouse.ui.community.CommunityFragment"
+        android:label="Community"
+        tools:layout="@layout/fragment_community" />
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.smartgreenhouse.ui.share.ShareFragment"
@@ -65,5 +69,12 @@
         android:name="com.example.smartgreenhouse.ui.setting.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
+
+    <activity
+        android:id="@+id/nav_map"
+        android:name="com.example.smartgreenhouse.ui.map.MapsActivity"
+        android:label="map"
+        tools:layout="@layout/activity_maps" />
+
 
 </navigation>
