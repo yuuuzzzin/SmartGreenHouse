@@ -13,7 +13,7 @@
 #define DHTPIN 2 //온습도
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
-
+String ID="abcd"; //아두이노 아이디
 int FAN=3;
 int motor1=4;
 int motor2=5;
@@ -35,19 +35,22 @@ void setup() {
   digitalWrite (motor1, HIGH);
   digitalWrite (motor2, HIGH);
   digitalWrite (motor3, HIGH);
-  digitalWrite (LED, HIGH);
+  digitalWrite (LED, LOW);
 
 }
-void operateLed(int operatetime) {  //LED
-  digitalWrite(LED, LOW);
-  delay(operatetime);
-  digitalWrite(LED, HIGH);  
+void operateLed() {  //LED
+  digitalWrite(LED, HIGH);
 }
-void operateFan(int operatetime){ //쿨링팬
+void stopLed() {
+  digitalWrite(LED, LOW);
+}
+void operateFan(){ //쿨링팬
   digitalWrite(FAN, LOW);
-  delay(operatetime);
+}
+void stopFan(){
   digitalWrite(FAN, HIGH);
 }
+
 void operateMotor(char motor){  //워터펌프 1,2,3
   if (motor == 'a'){ //워터펌프1
     digitalWrite(motor1, LOW);
@@ -62,15 +65,16 @@ void operateMotor(char motor){  //워터펌프 1,2,3
   if (motor == 'c'){ //워터펌프3
     digitalWrite(motor3, LOW);
     delay(3000);
-    digitalWrite(motor3, HIGH);  
+    digitalWrite(motor3, HIGH);
   }
 }
 
 //함수로 받아온 데이터값을 Json으로 변환
-void makeJson(float temp, float humi, int soil1, int soil2, int soil3, int cds, int level, String DeviceState) 
+void makeJson(String ID, float temp, float humi, int soil1, int soil2, int soil3, int cds, int level, String DeviceState) 
 { 
   StaticJsonDocument<256> doc;
   JsonObject root = doc.to<JsonObject>();
+  root["id"] = ID;
   root["temp"] = temp;
   root["humi"] = humi;
   root["soil1"] = soil1;
@@ -91,40 +95,53 @@ void loop() {
   int soil3 = analogRead(SOIL3);
   int cds = analogRead(CDS);
   int level = analogRead(LEVEL);
-
   
   if(Serial.available())
   {
     String Data = Serial.readString();
     if(Data == "StartFan") //쿨링팬 작동
     {
-      operateFan(10000);
-      DeviceState = "fanFInish";
+      operateFan();
+      DeviceState = "fanOperate";
+    }    
+    if(Data == "StopFan") //쿨링팬 작동
+    {
+      stopFan();
+      DeviceState = "fanFinish";
     }
     if(Data == "StartLed") //식물생장용 LED 작동
     {
-      operateLed(3000);
-      DeviceState = "ledFInish";
+      operateLed();
+      DeviceState = "ledOperate";
+    }
+    if(Data == "StopLed") //쿨링팬 작동
+    {
+      stopLed();
+      DeviceState = "ledFinish";
     }
     if(Data == "StartWater1") //워터펌프1 작동
     {
       operateMotor('a');
-      DeviceState = "water1FInish";
+      DeviceState = "water1Finish";
     }
-    else if(Data == "StartWater2") //워터펌프2 작동
+    if(Data == "StartWater2") //워터펌프2 작동
     {
       operateMotor('b');
-      DeviceState = "water2FInish";
+      DeviceState = "water2Finish";
     }
-    else if(Data == "StartWater3") //워터펌프3 작동
+    if(Data == "StartWater3") //워터펌프3 작동
     {
       operateMotor('c');
-      DeviceState = "water3FInish";
+      DeviceState = "water3Finish";
     }
+    if(Data == "null") //쿨링팬 작동
+    {
+      DeviceState = "null";
+    }  
   }
-  makeJson(temp, humi, soil1, soil2, soil3, cds, level, DeviceState);
-  if(DeviceState != "null"){
-    delay(5000);
+  makeJson(ID, temp, humi, soil1, soil2, soil3, cds, level, DeviceState);
+  if(DeviceState == "null"){
+    delay(1000);
   }
   delay(100);
 }
