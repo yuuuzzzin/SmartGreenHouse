@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="홈화면" />
+
+        <item
+            android:id="@+id/nav_plantinfo"
+            android:icon="@drawable/plant"
+            android:title="식물 정보" />
+
+
+        <item
+            android:id="@+id/nav_set"
+            android:icon="@drawable/greenhouse"
+            android:title="현재 온실 상태" />
+
+
+        <item
+            android:id="@+id/nav_graph"
+            android:icon="@drawable/chart"
+            android:title="온실 환경 그래프" />
+
+        <item
+            android:id="@+id/nav_reservation"
+            android:icon="@drawable/reservation"
+            android:title="장치 예약" />
+
+        <item
+            android:id="@+id/nav_streaming"
+            android:icon="@drawable/streaming"
+            android:title="스트리밍" />
+
+
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@drawable/home"
+            android:title="게시판" />
+
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="카메라" />
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/setting"
+            android:title="설정" />
+
+        <item
+            android:id="@+id/nav_appinfo"
+            android:icon="@drawable/info"
+            android:title="앱 정보" />
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/info"
+            android:title="지도" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="공유하기" />
+
+            <item
+                android:id="@+id/nav_email"
+                android:icon="@drawable/ic_menu_send"
+                android:title="메일 보내기" />
+        </menu>
+    </item>
+</menu>

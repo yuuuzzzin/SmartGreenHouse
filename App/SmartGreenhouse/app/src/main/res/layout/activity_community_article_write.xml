@@ -52,13 +52,14 @@
             android:text="@string/community_write_content"
             android:textColor="#000000"
             android:textSize="20sp"/>
+
         <EditText
             android:id="@+id/content"
             android:layout_width="fill_parent"
-            android:layout_height="390dp"
-            android:gravity="top"
+            android:layout_height="318dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/edge_edittext"
+            android:gravity="top"
             android:inputType="textImeMultiLine"
             android:minLines="3" />
     </LinearLayout>

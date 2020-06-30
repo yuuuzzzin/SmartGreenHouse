@@ -28,12 +28,12 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
     String result;
 
     TextView textView_hit;
-    TextView textView_memo;
+    TextView textView_content;
     TextView textView_time;
     TextView textView_writer_id;
     TextView textView_title;
 
-    String memo;
+    String content;
     String title;
     String time;
 
@@ -44,7 +44,7 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_community_article_read);
 
         textView_hit = findViewById(R.id.hit);
-        textView_memo = findViewById(R.id.memo);
+        textView_content = findViewById(R.id.memo);
         textView_time = findViewById(R.id.time);
         textView_writer_id = findViewById(R.id.id);
         textView_title = findViewById(R.id.title);
@@ -57,8 +57,10 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
            // Toast.makeText(getApplicationContext(),"hi",Toast.LENGTH_LONG).show();
         Intent intent = getIntent();
         str = intent.getStringExtra("position");
-        //Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
-       // getArticle(str);
+
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+
+        getContent(str);
     }
     @Override
     public void onResume(){
@@ -74,11 +76,11 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
         return null;
     }
 
-    /*
-    public void getArticle(final String idx)
+
+    public void getContent(final String idx)
     {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String url = getString(R.string.communityReadUrl);
+        String url = getString(R.string.getCommunityReadUrl);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>()
         {
@@ -95,11 +97,11 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "게시글을 불러오지 못했습니다.", Toast.LENGTH_LONG).show();
                     }
                     title = getURLDecode(jsonObject.optString("title"));
-                    memo = getURLDecode(jsonObject.optString("memo"));
+                    content = getURLDecode(jsonObject.optString("content"));
                     time = getURLDecode(jsonObject.optString("time"));
 
                     textView_hit.setText("조회 : " + jsonObject.optString("hit"));
-                    textView_memo.setText(memo);
+                    textView_content.setText(content);
                     textView_time.setText(time.substring(0,time.length() - 2) + " ");
                     textView_title.setText(title);
                     textView_writer_id.setText(jsonObject.optString("id"));
@@ -130,7 +132,7 @@ public class CommunityArticleReadActivity extends AppCompatActivity {
         };
         queue.add(stringRequest);
     }
-    */
+
 
 
 }

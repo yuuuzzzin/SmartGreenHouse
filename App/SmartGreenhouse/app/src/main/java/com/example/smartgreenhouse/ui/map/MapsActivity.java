@@ -146,7 +146,7 @@ public class MapsActivity extends AppCompatActivity
                 .listener(MapsActivity.this)
                 .key("AIzaSyDBmIB6PuNhb-20wgUJsoyRamBP0ojI5JU")
                 .latlng(location.latitude, location.longitude)//현재 위치
-                .radius(2000) //2KM 내에서 검색
+                .radius(2000) //2KM(2000) 내에서 검색
                 .type(PlaceType.FLORIST) // 꽃가게
                 .build()
                 .execute();
@@ -155,7 +155,7 @@ public class MapsActivity extends AppCompatActivity
     public void onPlacesFinished() {
     }
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -164,15 +164,15 @@ public class MapsActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_maps);
 
-            previous_marker = new ArrayList<Marker>();
+        previous_marker = new ArrayList<Marker>();
 
-            Button button = (Button)findViewById(R.id.button);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showPlaceInformation(currentPosition);
-                }
-            });
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPlaceInformation(currentPosition);
+            }
+        });
 
 
         mLayout = findViewById(R.id.layout_maps);

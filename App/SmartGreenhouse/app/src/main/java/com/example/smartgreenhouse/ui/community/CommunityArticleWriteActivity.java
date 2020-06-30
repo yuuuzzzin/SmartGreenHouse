@@ -43,8 +43,7 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
     private Button savebtn;
     private Button backbtn;
     SharedPreferences setting;
-    String id;
-    String pw;
+
     String time;
     private Timer mTimer;
     String str_title;
@@ -55,24 +54,23 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
     {
         String str = null;
         try{
-            BufferedReader br = new BufferedReader(new FileReader(getApplicationContext().getFilesDir() + "id.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(getApplicationContext().getFilesDir() + "/" + "id.txt"));
             str = null;
             str = br.readLine();
-            //Toast.makeText(getContext(), str+"readId 함수 안", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), str+"readId 함수 안", Toast.LENGTH_SHORT).show();
         } catch (IOException e){
             e.printStackTrace();
         } catch(Exception e) {
-            Toast.makeText(getApplicationContext(), "Exception", Toast.LENGTH_SHORT).show();
         }
-
         return str;
     }
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_article_write);
-        id = readId();
+        final String readID = readId();
 
+        //Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
         title = findViewById(R.id.title);
         content = findViewById(R.id.content);
         savebtn = findViewById(R.id.save_btn);
@@ -94,24 +92,25 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
                     String subTime1 = time.substring(0,10);
                     String subTime2 = time.substring(11,19);
                     tm = subTime1 + " " + subTime2;
-
-                    String utf_title = "", utf_memo = "", utf_id = "", utf_time = "";
+                    //Toast.makeText(getApplicationContext(), "클릭", Toast.LENGTH_SHORT).show();
+                    String utf_title = "", utf_content = "", utf_id = "", utf_time = "";
                     try {
                         utf_title = URLEncoder.encode(str_title, "UTF-8");
-                        utf_memo = URLEncoder.encode(str_content, "UTF-8");
-                        utf_id = URLEncoder.encode(id, "UTF-8");
+                        utf_content = URLEncoder.encode(str_content, "UTF-8");
+                        utf_id = URLEncoder.encode(readID, "UTF-8");
                         utf_time = URLEncoder.encode(time, "UTF-8");
+                        Toast.makeText(getApplicationContext(), "클릭", Toast.LENGTH_SHORT).show();
                     } catch(Exception e) {
 
                     }
 
-                    //Toast.makeText(getApplicationContext(), str_title, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), str_title, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getApplicationContext(), str_content, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), time, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), readID, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), time, Toast.LENGTH_SHORT).show();
 
-                 //   putServer(str_title, str_content, id, time);
-                    //finish();
+                    putServer(str_title, str_content, readID, time);
+                    finish();
                 }else{
                     Toast.makeText(getApplicationContext(),"제목과 내용을 모두 입력해주세요!", Toast.LENGTH_SHORT).show();
                 }
@@ -164,8 +163,8 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
         mTimer.schedule(timerTask, 500, 3000);
         super.onResume();
     }
-/*
-    public void putServer(final String getTitle, final String getMemo, final String getId, final String getTime)
+
+    public void putServer(final String getTitle, final String getContent, final String getId, final String getTime)
     {
         RequestQueue postRequestQueue = Volley.newRequestQueue(this);
         String url = getString(R.string.writeUrl);
@@ -178,9 +177,9 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
                 {
                     JSONObject jsonObject = new JSONObject(response);
                     String result = jsonObject.optString("RESULT");
-                    if(!(result.equals("1")))
+                    if(result.equals("1"))
                     {
-                        //Toast.makeText(getApplicationContext(), "hello.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "hello.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "not hello", Toast.LENGTH_SHORT).show();
 
@@ -199,7 +198,7 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error)
             {
                 // Error Handling
-                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "여기"+error.toString(), Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -210,7 +209,7 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),"hi",Toast.LENGTH_SHORT).show();
                 Map<String, String> params = new HashMap<>();
                 params.put("TITLE", getTitle);
-                params.put("MEMO", getMemo);
+                params.put("CONTENT", getContent);
                 params.put("ID", getId);
                 params.put("TIME", getTime);
                 return params;
@@ -218,5 +217,5 @@ public class CommunityArticleWriteActivity extends AppCompatActivity {
         };
         postRequestQueue.add(stringRequest);
     }
-   */
+
 }

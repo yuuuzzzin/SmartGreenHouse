@@ -3,12 +3,15 @@ package com.example.smartgreenhouse.ui.MyPlant;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+import java.io.InputStream;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +40,7 @@ import java.util.Map;
 public class UserPlantInfoActivity extends AppCompatActivity {
 
     private TextView txtPosition, txtNickname;
-    TextView txtInfo;
+    TextView txtInfo, path;
     String Position, info, jsoninfo;
     String positionNum;
 
@@ -49,6 +54,7 @@ public class UserPlantInfoActivity extends AppCompatActivity {
         txtNickname = findViewById(R.id.txtNickname);
 
         txtInfo = findViewById(R.id.txtInfo);
+        path = findViewById(R.id.tv);
         //selectButton = findViewById(R.id.selectButton);
         txtPosition.setText(intent.getStringExtra("position"));
         txtNickname.setText(intent.getStringExtra("nickname"));
@@ -96,6 +102,7 @@ public class UserPlantInfoActivity extends AppCompatActivity {
                 String summer = jObject.optString("watercycleSummerCodeNm");
                 String autumn = jObject.optString("watercycleAutumnCodeNm");
                 String winter = jObject.optString("watercycleWinterCodeNm");
+                String url = jObject.optString("image");
 
 
 
@@ -115,6 +122,23 @@ public class UserPlantInfoActivity extends AppCompatActivity {
                                 "비료 정보 :"+ferti+"\n"
 
                 );
+
+
+                    path.setText(url);
+                    final String stringpath = path.getText().toString();
+
+                    try {
+
+                        final ImageView iv = (ImageView) findViewById(R.id.imageurl);
+                        URL url2 = new URL(stringpath);
+                        InputStream is = url2.openStream();
+                        final Bitmap bm = BitmapFactory.decodeStream(is);
+
+                        iv.setImageBitmap(bm); //비트맵 객체로 보여주기
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "이미지불러오기 실패", Toast.LENGTH_SHORT).show();
+                    }
+
             }
             txtInfo.setText(sb.toString());
         }catch (JSONException e) {

@@ -14,8 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageIcon"
-            android:src="@drawable/c1"
+            android:id="@+id/imageurl"
             android:layout_width="100dp"
             android:layout_height="100dp" />
         <LinearLayout
@@ -52,5 +51,12 @@
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id ="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"></TextView>
 
 </LinearLayout>

@@ -36,16 +36,23 @@
             android:icon="@drawable/streaming"
             android:title="스트리밍" />
 
-
+<!--
         <item
             android:id="@+id/nav_community"
-            android:icon="@drawable/home"
+            android:icon="@drawable/board"
             android:title="게시판" />
+-->
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/map"
+            android:title="식물 가게 검색" />
 
+<!--
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
             android:title="카메라" />
+-->
 
         <item
             android:id="@+id/nav_setting"
@@ -57,20 +64,18 @@
             android:icon="@drawable/info"
             android:title="앱 정보" />
 
-        <item
-            android:id="@+id/nav_map"
-            android:icon="@drawable/info"
-            android:title="지도" />
 
 
     </group>
 
     <item android:title="Communicate">
         <menu>
+            <!--
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="공유하기" />
+                -->
 
             <item
                 android:id="@+id/nav_email"

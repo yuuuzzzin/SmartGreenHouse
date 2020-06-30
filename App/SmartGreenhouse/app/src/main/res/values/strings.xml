@@ -98,6 +98,13 @@
     <string name="getMonthlyHumiUrl">http://18.218.71.35/GetMonthlyHumi.jsp</string>
     <string name="getMonthlyLevelUrl">http://18.218.71.35/GetMonthlyLevel.jsp</string>
 
+
+    //게시판
+    <string name="writeUrl">http://18.218.71.35/WriteBoard.jsp</string>
+    <string name="getCommunityReadUrl">http://18.218.71.35/GetBoardContent.jsp</string>
+    <string name="getBoardListUrl">http://18.218.71.35/GetBoardList.jsp</string>
+    <string name="dwriteUrl">http://18.218.71.35/GetBoardListbackup.jsp</string>
+
     //시스템 설정
     <string name="titleSetting">설정</string>
     <string name="setting">SETTING</string>
@@ -108,6 +115,8 @@
     <string name="title_activity_graph_test">GraphTestActivity</string>
     <string name="title_activity_chart_tab">ChartTabActivity</string>
 
+    //스트리밍
+    <string name="getImageUrl">http://18.218.71.35/GetImageUrl.jsp</string>
 
     //장치 설정
     <string name="setAutoStatusUrl">http://18.218.71.35/SetAutoStatus.jsp</string>

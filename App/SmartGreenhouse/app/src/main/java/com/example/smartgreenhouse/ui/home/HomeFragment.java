@@ -738,7 +738,7 @@ public class HomeFragment extends Fragment {
                 String info2 = plantObject.getString("info");
 
                 jsonParsingUrl(info2);
-                Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
                 String Url = url;
                 try {
                     InputStream is = (InputStream) new URL(Url).getContent();
