@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -745,9 +744,8 @@ public class HomeFragment extends Fragment {
                     InputStream is = (InputStream) new URL(Url).getContent();
                     Bitmap d = BitmapFactory.decodeStream(is);
                     is.close();
-                    //imgResize(d);
-                    //imgR
-                    dataItem.setImage(imgResize(d));
+
+                    dataItem.setImage(d);
 
                 } catch (Exception e) {
                     Toast.makeText(getContext(), e.toString() + "이미지 불러오기 실패", Toast.LENGTH_SHORT).show();
@@ -762,20 +760,6 @@ public class HomeFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-
-    public Bitmap imgResize(Bitmap bitmap)
-    {
-        int x=1000,y=1000; //바꿀 이미지 사이즈
-        Bitmap output = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-        canvas.drawBitmap(bitmap, 0, 0, null);
-        int w = bitmap.getWidth();
-        int h = bitmap.getHeight();
-        Rect src = new Rect(0, 0, w, h);
-        Rect dst = new Rect(0, 0, x, y);//이 크기로 변경됨
-        canvas.drawBitmap(bitmap, src, dst, null);
-        return output;
-    }
 
     /*public void getPlantInfo(final String id)
     {

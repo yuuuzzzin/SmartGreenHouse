@@ -146,7 +146,7 @@ public class MapsActivity extends AppCompatActivity
                 .listener(MapsActivity.this)
                 .key("AIzaSyDBmIB6PuNhb-20wgUJsoyRamBP0ojI5JU")
                 .latlng(location.latitude, location.longitude)//현재 위치
-                .radius(9000) //9KM(9000)    2KM(2000) 내에서 검색
+                .radius(2000) //2KM(2000) 내에서 검색
                 .type(PlaceType.FLORIST) // 꽃가게
                 .build()
                 .execute();
@@ -402,7 +402,7 @@ public class MapsActivity extends AppCompatActivity
 
 
         if (addresses == null || addresses.size() == 0) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show(); //"주소 미발견"
+            Toast.makeText(this, "주소 미발견", Toast.LENGTH_LONG).show();
             return "주소 미발견";
 
         } else {
@@ -448,7 +448,7 @@ public class MapsActivity extends AppCompatActivity
 
 
         //디폴트 위치, Seoul
-        LatLng DEFAULT_LOCATION = new LatLng(37.3387, 126.7343464);
+        LatLng DEFAULT_LOCATION = new LatLng(37.56, 126.97);
         String markerTitle = "위치정보 가져올 수 없음";
         String markerSnippet = "위치 퍼미션과 GPS 활성 요부 확인하세요";
 

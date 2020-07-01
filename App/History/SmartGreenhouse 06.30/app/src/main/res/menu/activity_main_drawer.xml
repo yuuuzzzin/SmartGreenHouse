@@ -34,7 +34,7 @@
         <item
             android:id="@+id/nav_streaming"
             android:icon="@drawable/streaming"
-            android:title="스트리밍/사진" />
+            android:title="스트리밍" />
 
 <!--
         <item
