@@ -56,7 +56,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,6 +80,7 @@ public class HomeFragment extends Fragment {
     public HomeFragment.MyData[] data = null;
     ArrayList<String> listdata = new ArrayList<String>();
     TextView test;
+    TextView textTemperature, textHumidity;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -146,7 +150,8 @@ public class HomeFragment extends Fragment {
         button1 = (Button) view.findViewById(R.id.button1);
         toggleButton2 = (ToggleButton) view.findViewById(R.id.toggleButton2);
         toggleButton3 = (ToggleButton) view.findViewById(R.id.toggleButton3);
-        test = (TextView) view.findViewById(R.id.test);
+        textTemperature = view.findViewById(R.id.txtTemp);
+        textHumidity = view.findViewById(R.id.txtHum);
         final String finalID = readId();
 
         //RecyclerView의 Adapter 세팅
@@ -158,7 +163,7 @@ public class HomeFragment extends Fragment {
         //RecyclerView에 ItemTouchHelper 붙이기
         helper.attachToRecyclerView(recyclerView);
         getPlantInfo(finalID);
-
+        getPlantStatus(finalID);
 
         // 이 부분이 스레드 부분인데, 현재 오류가 나서 주석 처리 해놓았습니다.
         /*Thread getThread;
@@ -268,7 +273,7 @@ public class HomeFragment extends Fragment {
                         String water2 = jObject.optString("water2");
                         String water3 = jObject.optString("water3");
                         String led = jObject.optString("led");
-                        String fan = jObject.optString("fan");
+                        String fan = jObject.optString("fan1");
 
                         ledStatus = led;
                         fanStatus = fan;
@@ -316,6 +321,71 @@ public class HomeFragment extends Fragment {
         queue.add(stringRequest);
     }
 
+    public void setStatus(String temp, String humi)
+    {
+        int Temp = Integer.parseInt(temp);
+        int Humi = Integer.parseInt(humi);
+
+        textTemperature.setText(temp + "Cº");
+        textHumidity.setText(humi + "%");
+    }
+
+    public void getPlantStatus(final String id) //DB에서 온습도 정보 가져오기
+    {
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        String getPlantStatusUrl = getString(R.string.getPlantStatusUrl);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getPlantStatusUrl, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response)
+            {
+                // Response
+                try
+                {
+                    JSONArray jarray = new JSONObject(response).getJSONArray("List"); // 대괄호 구별
+                    JSONObject jObject = jarray.getJSONObject(0); // 중괄호 구별
+                    String result = jObject.optString("RESULT"); // 아이디가 중복되었을 시에 1을 리턴
+                    if(result.equals("1"))
+                    {
+                        String date = jObject.optString("date"); // 1970년으로부터의 시간
+                        String temp = jObject.optString("temp");
+                        String humi = jObject.optString("humi");
+
+                        setStatus(temp, humi);
+                    }
+                    else
+                    {
+                        textHumidity.setText("?");
+
+                        textTemperature.setText("?");
+                    }
+                }
+                catch(JSONException e)
+                {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener()
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                // Error Handling
+                Toast.makeText(getContext(), "시스템 오류", Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError
+            {
+                Map<String, String> params = new HashMap<>();
+                params.put("number", id);
+                return params;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
     public void getDeviceStatus(final String id)
     {
         RequestQueue queue = Volley.newRequestQueue(getContext());
@@ -340,10 +410,10 @@ public class HomeFragment extends Fragment {
                         String water2 = jObject.optString("water2");
                         String water3 = jObject.optString("water3");
                         String led = jObject.optString("led");
-                        String fan = jObject.optString("fan");
+                        String fan = jObject.optString("fan1");
 
                         /*ledStatus = led;
-                        fanStatus = fan;
+                        fanStatus = fan1;
 
                         if (ledStatus!=null && ledStatus.equals("on")) {
                             toggleButton2.setChecked(true);
@@ -458,11 +528,11 @@ public class HomeFragment extends Fragment {
                     String result = jObject.optString("RESULT");
                     if(result.equals("1"))
                     {
-                        Toast.makeText(getContext(), fan + "fan 상태 변경 완료", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), fan + "fan1 상태 변경 완료", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
-                        Toast.makeText(getContext(), fan + "fan 상태 변경 실패", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), fan + "fan1 상태 변경 실패", Toast.LENGTH_SHORT).show();
                     }
                 }
                 catch(org.json.JSONException e)
@@ -545,6 +615,8 @@ public class HomeFragment extends Fragment {
         };
         queue.add(stringRequest);
     }
+
+
 
     private void setUpRecyclerView() {
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
@@ -657,8 +729,8 @@ public class HomeFragment extends Fragment {
 
 
 
-                       // jsonParsingUrl(info);
-                      //  Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
+                        // jsonParsingUrl(info);
+                        //  Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
 
 
 
@@ -710,7 +782,7 @@ public class HomeFragment extends Fragment {
             JSONArray jarray = new JSONArray(json);
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);
-                 url = jObject.optString("image");
+                url = jObject.optString("image");
             }
             //txtInfo.setText(sb.toString());
         } catch (JSONException e) {
@@ -739,7 +811,7 @@ public class HomeFragment extends Fragment {
                 String info2 = plantObject.getString("info");
 
                 jsonParsingUrl(info2);
-               // Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), url , Toast.LENGTH_SHORT).show();
                 String Url = url;
                 try {
                     InputStream is = (InputStream) new URL(Url).getContent();
@@ -763,7 +835,7 @@ public class HomeFragment extends Fragment {
     }
 
 
-    public Bitmap imgResize(Bitmap bitmap)
+    public Bitmap imgResize(Bitmap bitmap)      //이미지 크기 변경 함수
     {
         int x=1000,y=1000; //바꿀 이미지 사이즈
         Bitmap output = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
@@ -776,7 +848,6 @@ public class HomeFragment extends Fragment {
         canvas.drawBitmap(bitmap, src, dst, null);
         return output;
     }
-
     /*public void getPlantInfo(final String id)
     {
         RequestQueue queue = Volley.newRequestQueue(getContext());
