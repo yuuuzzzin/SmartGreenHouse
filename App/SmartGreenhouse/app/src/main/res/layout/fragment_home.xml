@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:layout_marginBottom="10dp"
     tools:context="com.example.smartgreenhouse.ui.home.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -23,10 +24,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/watering" />
+
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="전체 물주기"
             android:id="@+id/adapterTitle1"/>
@@ -52,10 +58,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/light" />
+
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="LED"
             android:id="@+id/adapterTitle2"/>
@@ -81,10 +92,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/fan2" />
+
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             android:text="쿨링팬"
             android:id="@+id/adapterTitle3"/>
@@ -102,6 +118,69 @@
             android:textOff="Off"
             android:textOn="On"/>
 
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/temperature" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="온도"
+            android:textSize="20dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtTemp"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/humi" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="습도"
+            android:textSize="20dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/txtHum"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:layout_marginRight="30dp"
+            android:textColor="#000000"
+            android:gravity="right"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+
 
 </LinearLayout>

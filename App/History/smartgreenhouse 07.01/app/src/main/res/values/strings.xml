@@ -1,0 +1,147 @@
+<resources>
+    <string name="app_name">SmartGreenhouse</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">설정</string>
+    <string name="action_logout">로그아웃</string>
+
+    //navigation
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_camera">Camera</string>
+    <string name="menu_email">Email</string>
+    <string name="menu_graph">graph</string>
+    <string name="menu_plantInfo">plantInfo</string>
+    <string name="menu_streaming">Streaming</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //fragment_Graph
+    <string name="graph">GRAPH</string>
+
+
+    //로그인하기
+    <string name="login">LOGIN</string>
+    <string name="memberID">아이디</string>
+    <string name="memberPW">비밀번호</string>
+    <string name="loginState">로그인 상태 유지</string>
+    <string name="hintLogin">가입되지 않은 계정입니다</string>
+    <string name="btnJoin">회원가입</string>
+    <string name="btnFindAccount">아이디 / 비밀번호 찾기</string>
+
+
+    //fragment_graph_tab1
+    <string name="mon">월</string>
+    <string name="tue">화</string>
+    <string name="wed">수</string>
+    <string name="thu">목</string>
+    <string name="fri">금</string>
+    <string name="sat">토</string>
+    <string name="sun">일</string>
+
+
+    //가입하기
+    <string name="ID">아이디</string>
+    <string name="PW">비밀번호</string>
+    <string name="hintPw">4~10자 이내 영문자,숫자조합</string>
+    <string name="checkPw">비밀번호 확인</string>
+    <string name="Name">이름</string>
+    <string name="Phone">전화번호</string>
+    <string name="Signup">회원가입</string>
+
+    // 아이디/비번 찾기
+    <string name="findByPhone">등록된 전화번호로 찾기</string>
+    <string name="findId">가입 당시 입력한 전화번호를 통해 아이디 찾기</string>
+    <string name="findPw">가입 당시 입력한 전화번호를 통해 비밀번호 찾기</string>
+    <string name="btnNext">NEXT</string>
+
+    <string name="getGraphInformationeUrl">http://18.218.71.35/GetGraphInformation.jsp</string>
+    <string name="loginUrl">http://18.218.71.35/MemberCheck.jsp</string>
+    <string name="signupUrl">http://18.218.71.35/Signup.jsp</string>
+    <string name="checkIdrUrl">http://18.218.71.35/CheckID.jsp</string>
+    <string name="getPlantStatusUrl">http://18.218.71.35/GetPlantStatus.jsp</string>
+    <string name="streamingCage">http://218.37.72.89:8120/</string>
+    <string name="FindIdUrl">http://18.218.71.35/FindID.jsp</string>
+    <string name="FindPwUrl">http://18.218.71.35/FindID.jsp</string>
+    <string name="getDeviceStatusUrl">http://18.218.71.35/GetDeviceStatus.jsp</string>
+    <string name="setLedStatusUrl">http://18.218.71.35/SetLedStatus.jsp</string>
+    <string name="setFanStatusUrl">http://18.218.71.35/SetFanStatus.jsp</string>
+    <string name="setWaterStatusUrl">http://18.218.71.35/SetWaterStatus.jsp</string>
+    <string name="setOneWaterUrl">http://18.218.71.35/SetOneWater.jsp</string>
+
+    <string name="setPlantInfoUrl">http://18.218.71.35/SetPlantInfo.jsp</string>
+    <string name="getPlantInfoUrl">http://18.218.71.35/GetPlantInfo.jsp</string>
+    <string name="getUserPlantInfoUrl">http://18.218.71.35/GetUserPlantInfo.jsp</string>
+    <string name="modifyUserPlantNameUrl">http://18.218.71.35/ModifyUserPlantName.jsp</string>
+    <string name="deleteUserPlantUrl">http://18.218.71.35/DeleteUserPlant.jsp</string>
+
+
+    <string name="reservedLedUrl">http://18.218.71.35/ReservedLed.jsp</string>
+    <string name="reservedFanUrl">http://18.218.71.35/ReservedFan.jsp</string>
+    <string name="initDeviceUrl">http://18.218.71.35/InitDevice.jsp</string>
+
+    //그래프
+    <string name="getWeeklyTempUrl">http://18.218.71.35/GetWeeklyTemperature.jsp</string>
+    <string name="getWeeklyHumiUrl">http://18.218.71.35/GetWeeklyHumi.jsp</string>
+    <string name="getWeeklyLevelUrl">http://18.218.71.35/GetWeeklyLevel.jsp</string>
+
+    <string name="getMonthlyTempUrl">http://18.218.71.35/GetMonthlyTemperature.jsp</string>
+    <string name="getMonthlyHumiUrl">http://18.218.71.35/GetMonthlyHumi.jsp</string>
+    <string name="getMonthlyLevelUrl">http://18.218.71.35/GetMonthlyLevel.jsp</string>
+
+
+    //게시판
+    <string name="writeUrl">http://18.218.71.35/WriteBoard.jsp</string>
+    <string name="getCommunityReadUrl">http://18.218.71.35/GetBoardContent.jsp</string>
+    <string name="getBoardListUrl">http://18.218.71.35/GetBoardList.jsp</string>
+    <string name="dwriteUrl">http://18.218.71.35/GetBoardListbackup.jsp</string>
+
+    //시스템 설정
+    <string name="titleSetting">설정</string>
+    <string name="setting">SETTING</string>
+    <string name="settingNotice">시스템 설정</string>
+    <string name="settingSystem">SETTING</string>
+    <string name="autoLogin">자동 로그인</string>
+    <string name="keepAutoLogin">로그인 상태를 유지합니다</string>
+    <string name="title_activity_graph_test">GraphTestActivity</string>
+    <string name="title_activity_chart_tab">ChartTabActivity</string>
+
+    //스트리밍
+    <string name="getImageUrl">http://18.218.71.35/GetImageUrl.jsp</string>
+
+    //장치 설정
+    <string name="setAutoStatusUrl">http://18.218.71.35/SetAutoStatus.jsp</string>
+    <string name="getAutoStatusUrl">http://18.218.71.35/GetAutoStatus.jsp</string>
+    //게시글 보기
+    <string name="community_read_title">게시글 제목</string>
+    <string name="community_read_memo">게시글 본문</string>
+    <string name="community_read_hit">게시글 조회수</string>
+    <string name="community_read_time">게시글 시간</string>
+    <string name="community_read_id">게시글 아이디</string>
+    <string name="community_separate">|</string>
+    <string name="community_text">COMMUNITY</string>
+
+    //게시글 쓰기
+    <string name="community_button_write">글쓰기</string>
+    <string name="community_write_title">제목</string>
+    <string name="community_write_content">"내용 : "</string>
+    <string name="community_write_save">"저장하기"</string>
+    <string name="community_write_back">"돌아가기"</string>
+
+    //게시글
+    <string name="community_name">게시글 이름</string>
+    <string name="community_writer">작성자</string>
+    <string name="community_hit">hit</string>
+    <string name="community_day">작성 날짜</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>

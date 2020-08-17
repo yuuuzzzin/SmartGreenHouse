@@ -116,8 +116,7 @@ public class PlantStatusActivity extends AppCompatActivity {
         try{
             BufferedReader br = new BufferedReader(new FileReader(getApplicationContext().getFilesDir() + "/" + "id.txt"));
             str = null;
-            str = br.readLine();
-            //Toast.makeText(getApplicationContext(), str+"readId 함수 안", Toast.LENGTH_SHORT).show();
+            str = br.readLine();;
         } catch (IOException e){
             e.printStackTrace();
         } catch(Exception e) {
