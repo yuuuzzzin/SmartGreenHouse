@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smartgreenhouse"
+    >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"
+        />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        >
+
+        <service android:name=".MyService"
+            android:enabled="true">
+        </service>
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:label="BOOTReceiver">
+
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStropped">
+            <intent-filter>
+                <action android:name="RestartService"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ui.graph.ChartTabActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity"
+
+            ></activity>
+        <activity android:name=".ui.graph.ChartMainActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.graph.ChartActivity"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".ui.reservation.FanReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.reservation.LedReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.reservation.ReservationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.SetWaterActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantSettingActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantstatus.PlantStatusActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.PlantItemActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.MyPlant.UserPlantInfoActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.streaming.StreamingActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantInfoItemActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.plantInfo.PlantInfoActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.mail.EmailActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.Account.SignupActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.Account.FindAccountActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.Account.LoginActivity" />
+        <activity android:name=".ui.camera.CameraActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ui.setting.SettingDeviceActvity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.smartgreenhouse.ui.camera"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                />
+        </provider>
+    </application>
+
+</manifest>

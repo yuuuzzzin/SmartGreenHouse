@@ -1,0 +1,25 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=84:79:41:4A:B4:E8:5D:D6:92:70:99:65:C4:15:ED:E0:59:3E:B9:C8%3Bcom.example.smartgreenhouse.ui.map
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    84:79:41:4A:B4:E8:5D:D6:92:70:99:65:C4:15:ED:E0:59:3E:B9:C8
+
+    SHA-1 certificate fingerprint:
+    84:79:41:4A:B4:E8:5D:D6:92:70:99:65:C4:15:ED:E0:59:3E:B9:C8
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDLOAePLoHdVhTbhZ9w1uItluHpGtjc6iw</string>
+</resources>
+

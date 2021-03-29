@@ -1,0 +1,373 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.smartgreenhouse"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml
+10
+11    <!--
+12         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+13         Google Maps Android API v2, but you must specify either coarse or fine
+14         location permissions for the 'MyLocation' functionality.
+15    -->
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:10:5-79
+16-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:10:22-76
+17    <uses-permission android:name="android.permission.INTERNET" />
+17-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:11:5-67
+17-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:11:22-64
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:12:5-81
+18-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:12:22-78
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:13:5-80
+19-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:13:22-77
+20    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+20-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:14:5-77
+20-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:14:22-74
+21    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+21-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:15:5-81
+21-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:15:22-78
+22    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+22-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:10:5-79
+22-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:10:22-76
+23    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+23-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:18:5-80
+23-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:18:22-78
+24
+25    <uses-feature
+25-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:20:5-22:35
+26        android:name="android.hardware.camera"
+26-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:21:9-47
+27        android:required="true" />
+27-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:22:9-32
+28
+29    <!-- Include required permissions for Google Maps API to run. -->
+30    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+30-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:23:5-79
+30-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:23:22-76
+31
+32    <uses-feature
+32-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:26:5-28:35
+33        android:glEsVersion="0x00020000"
+33-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:27:9-41
+34        android:required="true" />
+34-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:28:9-32
+35
+36    <application
+36-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:24:5-170:19
+37        android:allowBackup="false"
+37-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:25:9-36
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
+39        android:debuggable="true"
+40        android:icon="@mipmap/ic_launcher"
+40-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:26:9-43
+41        android:label="@string/app_name"
+41-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:27:9-41
+42        android:roundIcon="@mipmap/ic_launcher_round"
+42-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:28:9-54
+43        android:supportsRtl="true"
+43-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:29:9-35
+44        android:testOnly="true"
+45        android:theme="@style/AppTheme"
+45-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:30:9-40
+46        android:usesCleartextTraffic="true" >
+46-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:31:9-44
+47
+48        <!--
+49             The API key for Google Maps-based APIs is defined as a string resource.
+50             (See the file "res/values/google_maps_api.xml").
+51             Note that the API key is linked to the encryption key used to sign the APK.
+52             You need a different API key for each encryption key, including the release key that is used to
+53             sign the APK for publishing.
+54             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+55        -->
+56        <meta-data
+56-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:41:9-43:55
+57            android:name="com.google.android.geo.API_KEY"
+57-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:42:13-58
+58            android:value="@string/google_maps_key" />
+58-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:43:13-52
+59
+60        <activity
+60-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:45:9-50:20
+61            android:name="com.example.smartgreenhouse.ui.map.MapsActivity"
+61-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:46:13-48
+62            android:label="식물가게 찾기"
+62-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:48:13-36
+63            android:parentActivityName="com.example.smartgreenhouse.MainActivity" >
+63-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:47:13-55
+64        </activity>
+65
+66        <service
+66-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:52:9-54:46
+67            android:name="com.example.smartgreenhouse.MyService"
+67-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:53:13-38
+68            android:enabled="true" />
+68-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:54:13-35
+69
+70        <receiver
+70-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:56:9-64:20
+71            android:name="com.example.smartgreenhouse.BootReceiver"
+71-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:57:13-41
+72            android:enabled="true"
+72-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:58:13-35
+73            android:exported="false"
+73-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:59:13-37
+74            android:label="BOOTReceiver" >
+74-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:60:13-41
+75            <intent-filter>
+75-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:61:13-63:29
+76                <action android:name="android.intent.action.BOOT_COMPLETED" />
+76-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:62:17-79
+76-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:62:25-76
+77            </intent-filter>
+78        </receiver>
+79        <receiver
+79-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:65:9-73:20
+80            android:name="com.example.smartgreenhouse.RestarterBroadcastReceiver"
+80-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:66:13-55
+81            android:enabled="true"
+81-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:67:13-35
+82            android:exported="true"
+82-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:68:13-36
+83            android:label="RestartServiceWhenStropped" >
+83-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:69:13-55
+84            <intent-filter>
+84-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:70:13-72:29
+85                <action android:name="RestartService" />
+85-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:71:17-57
+85-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:71:25-54
+86            </intent-filter>
+87        </receiver>
+88
+89        <activity
+89-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:75:9-78:47
+90            android:name="com.example.smartgreenhouse.ui.graph.ChartTabActivity"
+90-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:76:13-54
+91            android:parentActivityName="com.example.smartgreenhouse.MainActivity"
+91-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:77:13-55
+92            android:theme="@style/AppTheme" />
+92-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:78:13-44
+93        <activity
+93-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:79:9-81:58
+94            android:name="com.example.smartgreenhouse.ui.graph.ChartMainActivity"
+94-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:80:13-55
+95            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+95-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:81:13-55
+96        <activity
+96-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:82:9-84:58
+97            android:name="com.example.smartgreenhouse.ui.graph.ChartActivity"
+97-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:83:13-51
+98            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+98-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:84:13-55
+99        <activity
+99-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:85:9-87:58
+100            android:name="com.example.smartgreenhouse.ui.reservation.FanReservationActivity"
+100-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:86:13-66
+101            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+101-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:87:13-55
+102        <activity
+102-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:88:9-90:58
+103            android:name="com.example.smartgreenhouse.ui.reservation.LedReservationActivity"
+103-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:89:13-66
+104            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+104-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:90:13-55
+105        <activity
+105-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:91:9-93:58
+106            android:name="com.example.smartgreenhouse.ui.reservation.ReservationActivity"
+106-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:92:13-63
+107            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+107-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:93:13-55
+108        <activity
+108-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:94:9-96:58
+109            android:name="com.example.smartgreenhouse.ui.MyPlant.SetWaterActivity"
+109-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:95:13-56
+110            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+110-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:96:13-55
+111        <activity
+111-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:97:9-99:58
+112            android:name="com.example.smartgreenhouse.ui.plantInfo.PlantSettingActivity"
+112-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:98:13-62
+113            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+113-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:99:13-55
+114        <activity
+114-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:100:9-102:58
+115            android:name="com.example.smartgreenhouse.ui.plantstatus.PlantStatusActivity"
+115-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:101:13-63
+116            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+116-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:102:13-55
+117        <activity
+117-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:103:9-105:58
+118            android:name="com.example.smartgreenhouse.ui.MyPlant.PlantItemActivity"
+118-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:104:13-57
+119            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+119-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:105:13-55
+120        <activity
+120-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:106:9-108:58
+121            android:name="com.example.smartgreenhouse.ui.MyPlant.UserPlantInfoActivity"
+121-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:107:13-61
+122            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+122-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:108:13-55
+123        <activity
+123-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:109:9-111:58
+124            android:name="com.example.smartgreenhouse.ui.streaming.StreamingActivity"
+124-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:110:13-59
+125            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+125-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:111:13-55
+126        <activity
+126-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:112:9-114:58
+127            android:name="com.example.smartgreenhouse.ui.plantInfo.PlantInfoItemActivity"
+127-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:113:13-63
+128            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+128-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:114:13-55
+129        <activity
+129-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:115:9-117:58
+130            android:name="com.example.smartgreenhouse.ui.plantInfo.PlantInfoActivity"
+130-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:116:13-59
+131            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+131-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:117:13-55
+132        <activity
+132-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:118:9-120:58
+133            android:name="com.example.smartgreenhouse.ui.mail.EmailActivity"
+133-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:119:13-50
+134            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+134-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:120:13-55
+135        <activity
+135-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:121:9-123:58
+136            android:name="com.example.smartgreenhouse.ui.Account.SignupActivity"
+136-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:122:13-54
+137            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+137-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:123:13-55
+138        <activity
+138-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:124:9-126:58
+139            android:name="com.example.smartgreenhouse.ui.Account.FindAccountActivity"
+139-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:125:13-59
+140            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+140-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:126:13-55
+141        <activity android:name="com.example.smartgreenhouse.ui.Account.LoginActivity" />
+141-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:127:9-62
+141-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:127:19-59
+142        <activity
+142-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:128:9-130:58
+143            android:name="com.example.smartgreenhouse.ui.camera.CameraActivity"
+143-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:129:13-53
+144            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+144-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:130:13-55
+145        <activity
+145-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:131:9-133:58
+146            android:name="com.example.smartgreenhouse.ui.setting.SettingDeviceActvity"
+146-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:132:13-60
+147            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+147-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:133:13-55
+148        <activity
+148-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:134:9-136:58
+149            android:name="com.example.smartgreenhouse.ui.community.CommunityArticleReadActivity"
+149-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:135:13-70
+150            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+150-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:136:13-55
+151        <activity
+151-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:137:9-139:58
+152            android:name="com.example.smartgreenhouse.ui.community.CommunityArticleWriteActivity"
+152-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:138:13-71
+153            android:parentActivityName="com.example.smartgreenhouse.MainActivity" />
+153-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:139:13-55
+154        <activity
+154-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:140:9-149:20
+155            android:name="com.example.smartgreenhouse.SplashActivity"
+155-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:141:13-43
+156            android:screenOrientation="portrait"
+156-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:142:13-49
+157            android:theme="@style/SplashTheme" >
+157-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:143:13-47
+158            <intent-filter>
+158-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:144:13-148:29
+159                <action android:name="android.intent.action.MAIN" />
+159-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:145:17-69
+159-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:145:25-66
+160
+161                <category android:name="android.intent.category.LAUNCHER" />
+161-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:147:17-77
+161-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:147:27-74
+162            </intent-filter>
+163        </activity>
+164        <activity
+164-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:150:9-159:20
+165            android:name="com.example.smartgreenhouse.MainActivity"
+165-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:151:13-41
+166            android:label="@string/app_name"
+166-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:152:13-45
+167            android:theme="@style/AppTheme.NoActionBar" >
+167-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:153:13-56
+168            <intent-filter>
+168-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:144:13-148:29
+169                <action android:name="android.intent.action.MAIN" />
+169-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:145:17-69
+169-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:145:25-66
+170
+171                <category android:name="android.intent.category.LAUNCHER" />
+171-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:147:17-77
+171-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:147:27-74
+172            </intent-filter>
+173        </activity>
+174
+175        <provider
+175-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:161:9-169:20
+176            android:name="androidx.core.content.FileProvider"
+176-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:162:13-62
+177            android:authorities="com.example.smartgreenhouse.ui.camera"
+177-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:163:13-72
+178            android:exported="false"
+178-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:164:13-37
+179            android:grantUriPermissions="true" >
+179-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:165:13-47
+180            <meta-data
+180-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:166:13-168:54
+181                android:name="android.support.FILE_PROVIDER_PATHS"
+181-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:167:17-67
+182                android:resource="@xml/file_paths" />
+182-->C:\Users\JAEYEON\Desktop\Smartgreenhouse 06-27\app\src\main\AndroidManifest.xml:168:17-51
+183        </provider>
+184        <!-- Needs to be explicitly declared on P+ -->
+185        <uses-library
+185-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:33:9-35:40
+186            android:name="org.apache.http.legacy"
+186-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:34:13-50
+187            android:required="false" />
+187-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\c1b807caf8bd732fd6cda3adee978530\jetified-play-services-maps-16.1.0\AndroidManifest.xml:35:13-37
+188
+189        <activity
+189-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\77c2fc448e2bd0738fd67dce062b1efd\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+190            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+190-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\77c2fc448e2bd0738fd67dce062b1efd\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+191            android:exported="false"
+191-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\77c2fc448e2bd0738fd67dce062b1efd\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+192            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+192-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\77c2fc448e2bd0738fd67dce062b1efd\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+193
+194        <meta-data
+194-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\0dd8c682f2935405cbc8ac01c1441d91\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+195            android:name="com.google.android.gms.version"
+195-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\0dd8c682f2935405cbc8ac01c1441d91\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+196            android:value="@integer/google_play_services_version" />
+196-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\0dd8c682f2935405cbc8ac01c1441d91\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+197
+198        <provider
+198-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+199            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+199-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+200            android:authorities="com.example.smartgreenhouse.lifecycle-process"
+200-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+201            android:exported="false"
+201-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+202            android:multiprocess="true" />
+202-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\JAEYEON\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+203    </application>
+204
+205</manifest>
