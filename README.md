@@ -69,3 +69,6 @@
 ![그림2](https://user-images.githubusercontent.com/57751515/115829803-5d9c6d80-a44a-11eb-87f4-78b7fb450aa9.png)
 #### 온실 제작 모형
 ![20210423_154232](https://user-images.githubusercontent.com/57751515/115829926-8c1a4880-a44a-11eb-95f8-671851ea8400.png)
+### :mag_right: 시연영상
+--------------------------------------
+https://youtu.be/ifeq2chyuBU
