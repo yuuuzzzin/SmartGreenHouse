@@ -51,6 +51,8 @@
 ![20210423_144405](https://user-images.githubusercontent.com/57751515/115824134-756ff380-a442-11eb-9aac-aeae8548d3e8.png)
 #### 시스템 수행 시나리오
 ![20210423_144139](https://user-images.githubusercontent.com/57751515/115824278-a8b28280-a442-11eb-9a60-0d17207ff7a3.png)
+#### 서비스 수행 시나리오
+![KakaoTalk_20210423_150850053](https://user-images.githubusercontent.com/57751515/115826500-fbda0480-a445-11eb-87a7-9d461e9db0fe.png)
 #### 서비스 흐름도
 ![20210423_144818](https://user-images.githubusercontent.com/57751515/115826074-532ba500-a445-11eb-9a30-adde867fd40a.png)
 - **사용자 식물 종류 설정**
@@ -63,6 +65,7 @@
     3. 수동제어를 선택한 경우, 사용자의 설정에 따라 장치가 작동
 ### :mag_right: 결과물
 --------------------------------------
-#### 온실 제작 모형
 #### Application
-#### Arduino, Ras
+![그림2](https://user-images.githubusercontent.com/57751515/115829803-5d9c6d80-a44a-11eb-87f4-78b7fb450aa9.png)
+#### 온실 제작 모형
+![20210423_154232](https://user-images.githubusercontent.com/57751515/115829926-8c1a4880-a44a-11eb-95f8-671851ea8400.png)
