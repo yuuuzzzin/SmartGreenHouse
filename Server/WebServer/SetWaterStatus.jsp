@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="org.json.simple.*, java.sql.*, java.net.URLEncoder" %>
 
 <%
-//ÃÊ±â ¼±¾ð
+//ì´ˆê¸° ì„ ì–¸
 	JSONObject jsonMain = new JSONObject();
 	JSONArray jArray = new JSONArray();
 	JSONObject jObject = new JSONObject();
@@ -16,7 +16,7 @@
 	
 	if(n.equals(id)) {
 		jObject.put("RESULT", "0");
-		// 0 ¼Û½Å
+		// 0 ì†¡ì‹ 
 	} else {
 		Connection conn = null;
 		Statement stmt = null;
@@ -32,19 +32,17 @@
 		
 			if(rs != 0) {
 				jsonMain.put("RESULT", "1");
-				//JSONObject jsonID = new JSONObject();
-				//String id = rs.getString(1);
-				//jsonMain.put("ID", id);
-			}
-			else {
+			} else{
 				jsonMain.put("RESULT", "0");
 			}
 		}
+			
 		finally {
 			try {
 				stmt.close();
 			} catch (Exception ignored) {
 			}
+			
 			try {
 				conn.close();
 			} catch (Exception ignored) {
@@ -52,7 +50,7 @@
 		}
 	}
 	
-        // ¾Èµå·ÎÀÌµå¿¡ º¸³¾ µ¥ÀÌÅÍ¸¦ Ãâ·Â
+        // ì•ˆë“œë¡œì´ë“œì— ë³´ë‚¼ ë°ì´í„°ë¥¼ ì¶œë ¥
 	out.println(jsonMain.toJSONString());
 
 %>
