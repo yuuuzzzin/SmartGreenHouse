@@ -130,7 +130,7 @@ public class PlantStatusActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         String getPlantStatusUrl = getString(R.string.getPlantStatusUrl); // DB에 저장된 센서 값 불러오는 URL
         //Toast.makeText(getApplicationContext(), id, Toast.LENGTH_SHORT).show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, getPlantStatusUrl, new Response.Listener<String>()
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, getPlantStatusUrl, new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response)
